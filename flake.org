@@ -1,0 +1,41 @@
+#-*- mode: org -*-
+#+STARTUP: showall
+* inputs
+**  nixpkgs.url
+**  flake-utils.url
+**  home-manager
+*** url
+*** inputs.nixpkgs.follows
+**  doom-private.url
+**  doom-private.flake
+** nix-doom-emacs.url
+** nix-doom-emacs.inputs.doom-private.follows
+
+* outputs
+**  let
+*** system
+*** nixpkgs
+**** system
+**** overlays
+*** pkgs
+**  in
+*** homeConfigurations
+**** auros
+***** function:  inputs.home-manager.lib.homeManagerConfiguration
+****** pkgs
+****** modules
+*******  [home.nix]
+*** nixosConfigurations
+**** syryuhds
+***** function:  inputs.nixpkgs.lib.nixosSystem
+****** pkgs
+****** modules
+******* ({nixpkgs})
+*******  ({services.emacs})
+********  enable
+******** package
+******** function: inputs.home-manager.nixosModules.home-manager
++ /home-manager.useGlobalPkgs/
++ /home-manager.useUserPackages/
++ /home-manager.users.auros/
+******** (import ./configuration.nix)
