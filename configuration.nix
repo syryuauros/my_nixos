@@ -78,11 +78,21 @@
   #   keyMap = "us";
   # };
 
-  i18n.inputMethod = {
+  #i18n.inputMethod = {
   #  enabled = "ibus";
   #  ibus.engines = with pkgs.ibus-engines; [ hangul ];
-    enabled = "ibus";
+  # enabled = "ibus";
+  #};
+  #
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enabled = "kime";
+      kime.config = {
+        indicator.icon_color = "White";
+    };
   };
+};
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
