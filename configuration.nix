@@ -79,8 +79,9 @@
   # };
 
   i18n.inputMethod = {
+  #  enabled = "ibus";
+  #  ibus.engines = with pkgs.ibus-engines; [ hangul ];
     enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ hangul ];
   };
 
   # Enable the X11 windowing system.
