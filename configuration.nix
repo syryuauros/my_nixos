@@ -94,6 +94,7 @@
   };
 };
 
+  #noto-fonts added
   fonts.enableFontDir = true;
   fonts.fonts = with pkgs; [
     noto-fonts
