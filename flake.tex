@@ -1,0 +1,126 @@
+% Created 2022-07-15 Fri 14:16
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{JJ Kim}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={JJ Kim},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\#-\textbf{- mode: org -}-
+\section{inputs}
+\label{sec:org3889ecc}
+\subsection{nixpkgs.url}
+\label{sec:orgb007ffb}
+\subsection{flake-utils.url}
+\label{sec:org9e6676e}
+\subsection{home-manager}
+\label{sec:org309d50b}
+\subsubsection{url}
+\label{sec:orge2ccb0a}
+\subsubsection{inputs.nixpkgs.follows}
+\label{sec:org8f3c9b0}
+\subsection{doom-private.url}
+\label{sec:org6992ef1}
+\subsection{doom-private.flake}
+\label{sec:org4cd0f7b}
+\subsection{nix-doom-emacs.url}
+\label{sec:org917de48}
+\subsection{nix-doom-emacs.inputs.doom-private.follows}
+\label{sec:org8b9c1ed}
+
+\section{outputs}
+\label{sec:orgb2d46a0}
+\subsection{let}
+\label{sec:org84a99e7}
+\subsubsection{system}
+\label{sec:org98af988}
+\subsubsection{nixpkgs}
+\label{sec:org55aa5a7}
+\begin{enumerate}
+\item system
+\label{sec:org983ad6c}
+\item overlays
+\label{sec:org52f9792}
+\end{enumerate}
+\subsubsection{pkgs}
+\label{sec:orgeb84068}
+\subsection{in}
+\label{sec:org55e2e21}
+\subsubsection{homeConfigurations}
+\label{sec:org870f8ff}
+\begin{enumerate}
+\item auros
+\label{sec:org4f7242d}
+\begin{enumerate}
+\item function:  inputs.home-manager.lib.homeManagerConfiguration
+\label{sec:org3d68e39}
+\begin{enumerate}
+\item pkg
+\label{sec:org96f2f97}
+\item modules
+\label{sec:org42082d3}
+\begin{enumerate}
+\item\relax [home.nix]
+\label{sec:orgfbac3d4}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\subsubsection{nixosConfigurations}
+\label{sec:org5801c0a}
+\begin{enumerate}
+\item syryuhds
+\label{sec:org1931c6b}
+\begin{enumerate}
+\item function:  inputs.nixpkgs.lib.nixosSystem
+\label{sec:org3ac1853}
+\begin{enumerate}
+\item pkgs
+\label{sec:orgbd967bf}
+\item modules
+\label{sec:orgcdb1f36}
+\begin{enumerate}
+\item (\{nixpkgs\})
+\label{sec:org87b8dbc}
+\item (\{services.emacs\})
+\label{sec:org3a7ae94}
+\begin{enumerate}
+\item enable
+\label{sec:org950fb2c}
+\item package
+\label{sec:org119eeba}
+\item function: inputs.home-manager.nixosModules.home-manager
+\label{sec:orgfbe64d7}
+\begin{itemize}
+\item \emph{home-manager.useGlobalPkgs}
+\item \emph{home-manager.useUserPackages}
+\item \emph{home-manager.users.auros}
+\end{itemize}
+\item (import ./configuration.nix)
+\label{sec:org2695996}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\end{document}
