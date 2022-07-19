@@ -22,7 +22,7 @@
 *** homeConfigurations
 **** auros
 ***** function:  inputs.home-manager.lib.homeManagerConfiguration
-****** pkgs
+****** pkg
 ****** modules
 *******  [home.nix]
 *** nixosConfigurations
