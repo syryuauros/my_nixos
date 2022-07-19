@@ -94,6 +94,13 @@
   };
 };
 
+  fonts.enableFontDir = true;
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    inter
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
