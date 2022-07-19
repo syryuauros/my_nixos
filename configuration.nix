@@ -89,7 +89,7 @@
     inputMethod = {
       enabled = "kime";
       kime.config = {
-        indicator.icon_color = "White";
+        indicator.icon_color = "black";
     };
   };
 };
@@ -144,6 +144,7 @@
       wget
       firefox
       git
+      kime
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
