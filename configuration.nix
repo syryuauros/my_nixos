@@ -156,7 +156,7 @@
       brave
       (pkgs.texlive.combine {
         inherit (pkgs.texlive)
-          scheme-small
+          scheme-full
           pgf
           ;
       })
