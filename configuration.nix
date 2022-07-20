@@ -154,6 +154,12 @@
       git
       kime
       brave
+      (pkgs.texlive.combine {
+        inherit (pkgs.texlive)
+          scheme-small
+          pgf
+          ;
+      })
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
