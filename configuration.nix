@@ -36,6 +36,8 @@
     extraOptions = ''
       experimental-features = nix-command flakes
   #   experimental-features = nix-command flakes ca-references
+      keep-outputs = true
+      keep-derivations = true
     '';
     trustedUsers = [ "root" "@admin" "@wheel" ];
     binaryCaches = [
