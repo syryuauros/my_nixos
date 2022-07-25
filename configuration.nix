@@ -151,6 +151,8 @@
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
       firefox
+      direnv
+      nix-direnv
       git
       kime
       brave
@@ -160,6 +162,20 @@
           pgf
           ;
       })
+    ];
+
+    # nix options for derivations to persist garbage collection
+    #nix.extraOptions = ''
+    #  keep-outputs = true
+    #  keep-derivations = true
+    #'';
+    environment.pathsToLink = [
+      "/share/nix-direnv"
+    ];
+    # if you also want support for flakes (this makes nix-direnv use the
+    # unstable version of nix):
+    nixpkgs.overlays = [
+      (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
     ];
 
   # Some programs need SUID wrappers, can be configured further or are
