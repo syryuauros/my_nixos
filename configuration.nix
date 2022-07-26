@@ -85,7 +85,7 @@
   #  ibus.engines = with pkgs.ibus-engines; [ hangul ];
   # enabled = "ibus";
   #};
-  #
+  # 한글 및 폰트
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
@@ -152,7 +152,7 @@
     environment.systemPackages = with pkgs; [
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
-      firefox
+      openblas
       direnv
       nix-direnv
       git
