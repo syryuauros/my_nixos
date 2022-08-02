@@ -158,6 +158,7 @@
       git
       kime
       brave
+      kolourpaint
       (pkgs.texlive.combine {
         inherit (pkgs.texlive)
           scheme-full
