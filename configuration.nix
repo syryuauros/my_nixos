@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      # configuration.nix와 hardware-configuration.nix의 디렉토리가 다르기 때문에 nixos-rebuild ... 뒤에 --impure 옵션이 붙어야 한다.
       /etc/nixos/hardware-configuration.nix
     ];
 
@@ -189,6 +190,9 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  #
+  # default editor setting from nano to vi editor
+    programs.neovim.defaultEditor = true;
 
   # List services that you want to enable:
     services.flatpak.enable = true;

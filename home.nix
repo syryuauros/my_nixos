@@ -7,6 +7,7 @@
     ripgrep
     starship
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    hyperfine
   ];
 
 }
