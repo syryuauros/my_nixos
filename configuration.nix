@@ -120,16 +120,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Enable pixiecore server
-  services.pixiecore = {
-    enable = true;
-    openFirewall = true;
-    debug = true;
-    dhcpNoBind = true;
-    inherit kernel initrd cmdLine;
-  };
-
-
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -213,14 +203,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
    networking.firewall.enable = false;
-
-   services.avahi.enable = true;
-   services.avahi.publish.enable = true;
-   services.avahi.publish.addresses = true;
-   services.avahi.publish.domain = true;
-   services.avahi.publish.userServices = true;
-   services.avahi.publish.workstation = true;
-   services.avahi.nssmdns = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
