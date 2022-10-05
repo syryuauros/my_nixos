@@ -10,6 +10,7 @@
     doom-private.flake = false;
     nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
     nix-doom-emacs.inputs.doom-private.follows = "doom-private";
+    fmmdosa-api.url = "git+ssh://git@github.com/haedosa/fmmdosa-api.git";
   };
 
   outputs = inputs:
@@ -17,7 +18,13 @@
       system = "x86_64-linux";
       nixpkgs = {
         inherit system;
-        overlays = [ inputs.nix-doom-emacs.overlay ];
+        overlays = [
+          inputs.nix-doom-emacs.overlay
+          (final: prev: {
+            fmmdosa-api = inputs.fmmdosa-api.defaultPackage.${system};
+            }
+          )
+        ];
       };
       pkgs = import inputs.nixpkgs nixpkgs;
     in
@@ -46,6 +53,35 @@
               package = pkgs.doom-emacs;
               # client.enable = true;
             };
+
+            systemd.services.fmmdosa-api = {
+              enable = true;
+              description = "fmmdosa-api";
+              wantedBy = ["multi-user.target"];
+              serviceConfig.ExecStart = "${pkgs.fmmdosa-api}/bin/fmmdosa-api";
+            };
+            networking.firewall.allowedTCPPorts = [ 80 443 3000 ];
+
+            services.nginx = {
+              enable = true;
+
+              recommendedGzipSettings = true;
+              recommendedOptimisation = true;
+              recommendedProxySettings = true;
+              recommendedTlsSettings = true;
+
+              proxyTimeout = "90s";
+
+              virtualHosts."fmmdosa-api" = {
+
+                # enableACME = true;
+                # addSSL = true;
+
+                locations."/fmmdosa-api".proxyPass =
+                    "http://localhost:3000";
+              };
+            };
+
           })
           inputs.home-manager.nixosModules.home-manager
           {

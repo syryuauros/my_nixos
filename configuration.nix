@@ -37,21 +37,27 @@
     extraOptions = ''
       experimental-features = nix-command flakes
   #   experimental-features = nix-command flakes ca-references
+
       keep-outputs = true
       keep-derivations = true
     '';
-    trustedUsers = [ "root" "@admin" "@wheel" ];
+    settings.require-sigs = false;
+    settings.trusted-users = [ "@wheel" ];
+
+    #trustedUsers = [ "root" "@admin" "@wheel" ];
     binaryCaches = [
       "https://cache.nixos.org/"
       "https://hydra.iohk.io"
       "https://cachix.cachix.org"
       "https://nix-community.cachix.org"
+      "http://haedosa.xyz:2006"
     ];
     binaryCachePublicKeys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "builder6:LoWfwaMHhw0E4FrXq3qlTvslOgZHh7fIPFVcfPy3UXo="
     ];
   };
 
@@ -140,7 +146,7 @@
       isNormalUser = true;
       uid = 1000;
       home = "/home/auros";
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "root" ];
     # to generate : nix-shell -p mkpasswd --run 'mkpasswd -m sha-512'
       hashedPassword = "$6$4eILJE5YFY$RDB8ra1mdoFaPscoDnEgoQBI83StsUEVhwUp2mAWK0b082ocZ44hdLBlRTPt.6IayLqr/6wuwRCTpxAacfE56.";
       openssh.authorizedKeys.keys = [
@@ -178,7 +184,18 @@
     services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
+    services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
+  };
+
+  programs.ssh.extraConfig = ''
+   Host 192.168.0.*
+     StrictHostKeyChecking no
+     UserKnownHostsFile=/dev/null
+  '';
+
+
 
     security.sudo.wheelNeedsPassword = false;
   # Open ports in the firewall.
@@ -192,7 +209,8 @@
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).  system.stateVersion = options.system.stateVersion.default;
+
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
