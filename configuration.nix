@@ -120,6 +120,16 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable pixiecore server
+  services.pixiecore = {
+    enable = true;
+    openFirewall = true;
+    debug = true;
+    dhcpNoBind = true;
+    inherit kernel initrd cmdLine;
+  };
+
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
