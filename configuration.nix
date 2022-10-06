@@ -116,6 +116,10 @@
   services.xserver.enable = true;
 
 
+  # Enable kdeconnect
+  programs.kdeconnect.enable = true;
+
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -161,6 +165,7 @@
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
       unzip
+      fmmdosa
     ];
 
     # nix options for derivations to persist garbage collection

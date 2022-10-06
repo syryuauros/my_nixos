@@ -11,6 +11,7 @@
     nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
     nix-doom-emacs.inputs.doom-private.follows = "doom-private";
     fmmdosa-api.url = "git+ssh://git@github.com/haedosa/fmmdosa-api.git";
+    fmmdosa.url = "git+ssh://git@github.com/haedosa/fmmdosa.git";
   };
 
   outputs = inputs:
@@ -22,6 +23,7 @@
           inputs.nix-doom-emacs.overlay
           (final: prev: {
             fmmdosa-api = inputs.fmmdosa-api.defaultPackage.${system};
+            fmmdosa = inputs.fmmdosa.defaultPackage.${system};
             }
           )
         ];
@@ -60,7 +62,8 @@
               wantedBy = ["multi-user.target"];
               serviceConfig.ExecStart = "${pkgs.fmmdosa-api}/bin/fmmdosa-api";
             };
-            networking.firewall.allowedTCPPorts = [ 80 443 3000 ];
+            networking.firewall.allowedTCPPorts = [ 80 443 3000 1714 1764 ]; # 1714, 1764 for kde connect, 443 3000 for pixiecore
+
 
             services.nginx = {
               enable = true;
