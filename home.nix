@@ -25,6 +25,8 @@ in {
     kolourpaint
   ];
 
+  # modules using here is coming from https://github.com/nix-community/home-manager/blob/master/modules/programs
+
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
