@@ -25,7 +25,12 @@ in {
     kolourpaint
   ];
 
-  # modules using here is coming from https://github.com/nix-community/home-manager/blob/master/modules/programs
+  # modules using here is coming from https://github.com/nix-community/home-manager/blob/master/modules/
+
+  services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
 
   programs.fzf = {
     enable = true;

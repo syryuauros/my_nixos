@@ -146,7 +146,7 @@
       isNormalUser = true;
       uid = 1000;
       home = "/home/auros";
-      extraGroups = [ "wheel" "networkmanager" "root" ];
+      extraGroups = [ "wheel" "networkmanager" "root" "docker" ];
     # to generate : nix-shell -p mkpasswd --run 'mkpasswd -m sha-512'
       hashedPassword = "$6$4eILJE5YFY$RDB8ra1mdoFaPscoDnEgoQBI83StsUEVhwUp2mAWK0b082ocZ44hdLBlRTPt.6IayLqr/6wuwRCTpxAacfE56.";
       openssh.authorizedKeys.keys = [
@@ -163,6 +163,9 @@
       unzip
       fmmdosa
     ];
+
+  # Enabling the docker service
+    virtualisation.docker.enable = true;
 
     # nix options for derivations to persist garbage collection
     #nix.extraOptions = ''
