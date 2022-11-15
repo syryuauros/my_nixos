@@ -23,6 +23,7 @@ in {
     mynerdfonts
     mytex
     kolourpaint
+    gnuplot
   ];
 
   # modules using here is coming from https://github.com/nix-community/home-manager/blob/master/modules/
