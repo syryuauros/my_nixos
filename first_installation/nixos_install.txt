@@ -1,0 +1,19 @@
+#https://nixos.org/manual/nixos/stable/index.html#sec-installation
+#https://dupont3031.tistory.com/37  ---- Gparted, swap setting
+
+1. Formatting (using Gparted recommended)
+   a. delete partitions in the device which will be nixos installed
+   b. allocate 512MiB as fat32 format, label: BOOT, flag: boot, esp ---- disk position head
+   c. allocate 8192MiB as SWAP as linux-swap, label:swap ---- disk position tail
+   d. allocate residual storage as ext4, label: root, flag: no ---- disk position center
+
+2. mounting
+   a. mount root:  # mount /dev/disk/by-label/root /mnt             >>>  label이 root로 된 디스크를 /mnt로 마운트
+   b. mount BOOT:  # mkdir -p /mnt/boot
+                   # mount /dev/disk/by-label/BOOT /mnt/boot        >>>  label이 BOOT로 된 디스크를 /mnt/boot로 마운트
+   c. swap activation:  # swapon *\device name\*
+
+3. generate nix configuration
+   a. generate nixos-configuration and hardware-configuration: # nixos-generate-config --root /mnt
+   b. Edit configuration.nix: #vi /mnt/etc/nixos/configuration.nix
+   c. install: # nixos-install
