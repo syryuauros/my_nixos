@@ -1,5 +1,6 @@
 #https://nixos.org/manual/nixos/stable/index.html#sec-installation
 #https://dupont3031.tistory.com/37  ---- Gparted, swap setting
+# REF configuration   https://gist.github.com/joedicastro/a19a9dfd21470783240c739657747f5d
 
 1. Formatting (using Gparted recommended)
    a. delete partitions in the device which will be nixos installed
