@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     flake-utils.url = "github:numtide/flake-utils/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     doom-private.url = "github:syryuauros/doom-private";
@@ -32,7 +32,6 @@
           ./home.nix
          ];
        };
-
     };
 
     nixosConfigurations = {
@@ -52,6 +51,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.auros = import ./home.nix;
+            #home-manager.users.auros.home.stateVersion = "22.11";
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
@@ -63,3 +63,13 @@
   };
 
 }
+# home-manager set up & use nixos version 22.11
+# emacs setup
+#     org-roam-ui :: https://www.youtube.com/watch?v=HXa5fZjbioA
+#
+# org-mode, tagging
+#      https://thagomizer.com/blog/2018/05/30/org-mode-tagging.html
+#
+#
+# home-manager option
+#      https://mipmip.github.io/home-manager-option-search/

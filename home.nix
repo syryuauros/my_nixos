@@ -115,4 +115,5 @@ in {
     o = "xdg-open";
   };
 
+  home.stateVersion = "22.11";
 }

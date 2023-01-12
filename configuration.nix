@@ -40,13 +40,16 @@
       keep-outputs = true
       keep-derivations = true
     '';
-    trustedUsers = [ "root" "@admin" "@wheel" ];
-    binaryCaches = [
+    #trustedUsers = [ "root" "@admin" "@wheel" ];
+    settings.trustedUsers = [ "root" "@admin" "@wheel" ];
+    #binaryCaches = [
+    settings.substituters = [
       "https://cache.nixos.org/"
       "https://cachix.cachix.org"
       "https://nix-community.cachix.org"
     ];
-    binaryCachePublicKeys = [
+    #binaryCachePublicKeys = [
+    settings.trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -192,6 +195,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }
