@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: let
+{ pkgs, config, inputs, lib, ... }: let
 
   mytex =
     (pkgs.texlive.combine {
@@ -115,5 +115,17 @@ in {
     o = "xdg-open";
   };
 
-  home.stateVersion = "22.11";
+  home.sessionVariables = {
+
+      NIX_PATH =
+        lib.concatStringsSep ":" [
+        "$HOME/.nix-defexpr/channels"
+        "nixpkgs=${inputs.nixpkgs.outPath}"
+        "nixos-config=/home/auros/gits/my_nixos/configuration.nix"
+        "/nix/var/nix/profiles/per-user/root/channels"
+      ];
+
+    };
+
+  home.stateVersion = "22.05";
 }

@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     flake-utils.url = "github:numtide/flake-utils/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     doom-private.url = "github:syryuauros/doom-private";
@@ -31,6 +31,9 @@
         modules = [
           ./home.nix
          ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
        };
     };
 
@@ -51,6 +54,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.auros = import ./home.nix;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+
             #home-manager.users.auros.home.stateVersion = "22.11";
 
             # Optionally, use home-manager.extraSpecialArgs to pass

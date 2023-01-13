@@ -38,11 +38,11 @@
     "doom-private": {
       "flake": false,
       "locked": {
-        "lastModified": 1659341216,
-        "narHash": "sha256-pQYzgkMCTodFabRt8mwUQLQgfo/fWLe330x8fhDkTJ8=",
+        "lastModified": 1673490077,
+        "narHash": "sha256-Vldoug9oyknan5ln2gEbS3aknGBHPFcFRgcgGYxY6E4=",
         "owner": "syryuauros",
         "repo": "doom-private",
-        "rev": "e2f50b6b4dda97257d977802fa56ee0e580af0a7",
+        "rev": "69bbfa546a61e30ee9e60f614b7b637c92b81023",
         "type": "github"
       },
       "original": {
@@ -184,11 +184,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
         "type": "github"
       },
       "original": {
@@ -249,20 +249,19 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1672244468,
-        "narHash": "sha256-xaZb8AZqoXRCSqPusCk4ouf+fUNP8UJdafmMTF1Ltlw=",
+        "lastModified": 1667907331,
+        "narHash": "sha256-bHkAwkYlBjkupPUFcQjimNS8gxWSWjOTevEuwdnp5m0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "89a8ba0b5b43b3350ff2e3ef37b66736b2ef8706",
+        "rev": "6639e3a837fc5deb6f99554072789724997bc8e5",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-22.11",
+        "ref": "release-22.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -297,11 +296,11 @@
         "ts-fold": "ts-fold"
       },
       "locked": {
-        "lastModified": 1658972636,
-        "narHash": "sha256-lYYMmHX1gG5TWEwf85B3XFrdnJwNEU2jtpAwnj/LE1w=",
+        "lastModified": 1673504460,
+        "narHash": "sha256-jzRyyKvVHnKSZ4jnUyy6vUHR3BD+WIJbgm6MC0sbeoM=",
         "owner": "syryuauros",
         "repo": "nix-doom-emacs",
-        "rev": "92a925fbed9566b06d3e10bb733059baaaa3780a",
+        "rev": "2bcae0735848f0b89ed45a5c2a4f143bedd15849",
         "type": "github"
       },
       "original": {
@@ -356,16 +355,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1673345971,
-        "narHash": "sha256-4DfFcKLRfVUTyuGrGNNmw37IeIZSoku9tgTVmu/iD98=",
+        "lastModified": 1672580127,
+        "narHash": "sha256-3lW3xZslREhJogoOkjeZtlBtvFMyxHku7I/9IVehhT8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "54644f409ab471e87014bb305eac8c50190bcf48",
+        "rev": "0874168639713f547c05947c76124f78441ea46c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-22.11",
+        "ref": "nixos-22.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -520,21 +519,6 @@
       "original": {
         "owner": "jcs-elpa",
         "repo": "ts-fold",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
