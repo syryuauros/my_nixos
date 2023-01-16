@@ -38,11 +38,11 @@
     "doom-private": {
       "flake": false,
       "locked": {
-        "lastModified": 1673583061,
-        "narHash": "sha256-opFeFbBUQVzlZBqBe4HTco9oLIuG/As65KNkTvx6vIw=",
+        "lastModified": 1673835176,
+        "narHash": "sha256-vkKHa2sfwlDD2NVnHcGPKmICxQwo8D2IN0Uetu8suLg=",
         "owner": "syryuauros",
         "repo": "doom-private",
-        "rev": "f8fa292ae803a164bc806f91e249a0b5ddc39c05",
+        "rev": "44388b2a31041e8bc12ba1f261e3773245780722",
         "type": "github"
       },
       "original": {
@@ -296,11 +296,11 @@
         "ts-fold": "ts-fold"
       },
       "locked": {
-        "lastModified": 1673504460,
-        "narHash": "sha256-jzRyyKvVHnKSZ4jnUyy6vUHR3BD+WIJbgm6MC0sbeoM=",
+        "lastModified": 1673834459,
+        "narHash": "sha256-M67JXK9PZp5fHskjWIbboCoKCUXbRACJKLrO1BTo/YE=",
         "owner": "syryuauros",
         "repo": "nix-doom-emacs",
-        "rev": "2bcae0735848f0b89ed45a5c2a4f143bedd15849",
+        "rev": "b04934244ae338de103db18948dc0ff76a57dab1",
         "type": "github"
       },
       "original": {
