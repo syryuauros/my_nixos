@@ -44,7 +44,7 @@
           ({ inherit nixpkgs;})
           ({pkgs, ...} :{
             services.emacs = {
-              enable = true;
+              enable = false;
               package = pkgs.doom-emacs;
               # client.enable = true;
             };
