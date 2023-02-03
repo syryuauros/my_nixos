@@ -12,6 +12,8 @@
 
 in {
 
+  home.username = "syryu@auros";
+  home.homeDirectory = "/home/auros";
   programs.home-manager.enable = true;
   programs.jq.enable = true;
   programs.bat.enable = true;

@@ -1,11 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    myxmonad.url = "github:jjdosa/myxmonad";
     doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
     nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
@@ -17,14 +18,18 @@
       system = "x86_64-linux";
       nixpkgs = {
         inherit system;
-        overlays = [ inputs.nix-doom-emacs.overlay ];
-      };
+        overlays = [
+          inputs.nix-doom-emacs.overlay
+              (final: prve: {
+                xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
+              })
+        ];  };
       pkgs = import inputs.nixpkgs nixpkgs;
     in
     {
     homeConfigurations = {
       auros =  inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";  #https://discourse.nixos.org/t/fn-homemanagerconfiguration-missing-arg-system-but-why/21192
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
@@ -67,6 +72,14 @@
         ];
       };
     };
+    devShells.x86_64-linux.default = pkgs.mkShell rec {
+      nativeBuildInputs = with pkgs; [
+        nix
+        home-manager
+        xmonad-restart
+      ];
+    };
+
   };
 
 }

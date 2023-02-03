@@ -42,6 +42,7 @@
     '';
     trustedUsers = [ "root" "@admin" "@wheel" ];
     #settings.trustedUsers = [ "root" "@admin" "@wheel" ];
+    #settings.trustedUsers = [ "root" "@admin" "@wheel" ];
     #binaryCaches = [
     settings.substituters = [
       "https://cache.nixos.org/"
@@ -92,9 +93,7 @@
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
       enabled = "kime";
-      kime.config = {
-        indicator.icon_color = "black";
-    };
+      kime = {};
   };
 };
 
