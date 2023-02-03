@@ -19,12 +19,17 @@ in {
   programs.bat.enable = true;
 
   fonts.fontconfig.enable = true;
+
+  imports = [ inputs.myxmonad.homeManagerModules.default ];
+  mysystem.windowManager.xmonad.enable = true;
+
   home.packages = with pkgs;[
     ripgrep
     hyperfine
     mynerdfonts
     mytex
     kolourpaint
+    inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
   ];
 
   programs.fzf = {
