@@ -1,16 +1,20 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils/master";
     home-manager = {
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils/master";
     myxmonad.url = "github:jjdosa/myxmonad";
     doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
-    nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
-    nix-doom-emacs.inputs.doom-private.follows = "doom-private";
+    nix-doom-emacs = {
+      url = "github:jjdosa/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # nix-doom-emacs.url = "github:jjdosa/nix-doom-emacs";
+    # nix-doom-emacs.inputs.doom-private.follows = "doom-private";
   };
 
   outputs = inputs:
@@ -19,7 +23,8 @@
       nixpkgs = {
         inherit system;
         overlays = [
-          inputs.nix-doom-emacs.overlay
+          # inputs.nix-doom-emacs.overlays.default
+          #inputs.nix-doom-emacs.overlay
               (final: prve: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
               })
@@ -33,6 +38,8 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
+          home.username = "syryu@auros";
+          home.homeDirectory = "/home/auros";
         modules = [
           ./home.nix
          ];
