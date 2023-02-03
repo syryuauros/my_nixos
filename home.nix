@@ -23,14 +23,22 @@ in {
   imports = [ inputs.myxmonad.homeManagerModules.default ];
   mysystem.windowManager.xmonad.enable = true;
 
-  home.packages = with pkgs;[
-    ripgrep
-    hyperfine
+  home.packages = [
+  pkgs. ripgrep
+  pkgs.hyperfine
     mynerdfonts
     mytex
-    kolourpaint
-    inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
+  pkgs.kolourpaint
+  inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
   ];
+  # home.packages = with pkgs;[
+  #   ripgrep
+  #   hyperfine
+  #   mynerdfonts
+  #   mytex
+  #   kolourpaint
+  #   # inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
+  # ];
 
   programs.fzf = {
     enable = true;
