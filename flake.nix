@@ -7,14 +7,14 @@
     };
     flake-utils.url = "github:numtide/flake-utils/main";
     myxmonad.url = "github:syryuauros/myxmonad";
-    doom-private.url = "github:syryuauros/doom-private";
+    doom-private.url = "github:jjdosa/doom-private";
     doom-private.flake = false;
-    #nix-doom-emacs = {
-    #  url = "github:jjdosa/nix-doom-emacs";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-    nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
-    nix-doom-emacs.inputs.doom-private.follows = "doom-private";
+    nix-doom-emacs = {
+      url = "github:jjdosa/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
+    #nix-doom-emacs.inputs.doom-private.follows = "doom-private";
   };
 
   outputs = inputs:
@@ -56,27 +56,27 @@
         inherit system;
         modules = [
           ({ inherit nixpkgs;})
-          ({pkgs, ...} :{
-            services.emacs = {
-              enable = true;
-              package = pkgs.doom-emacs;
-               # client.enable = true;
-             };
-           })
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.auros = import ./home.nix;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
+          # ({pkgs, ...} :{
+          #   services.emacs = {
+          #     enable = true;
+          #     package = pkgs.doom-emacs;
+          #      # client.enable = true;
+          #    };
+          #  })
+          # inputs.home-manager.nixosModules.home-manager
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          #   home-manager.users.auros = import ./home.nix;
+          #   home-manager.extraSpecialArgs = {
+          #     inherit inputs;
+          #   };
 
-            #home-manager.users.auros.home.stateVersion = "22.11";
+          #   #home-manager.users.auros.home.stateVersion = "22.11";
 
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
+          #   # Optionally, use home-manager.extraSpecialArgs to pass
+          #   # arguments to home.nix
+          # }
           (import ./configuration.nix)
         ];
       };

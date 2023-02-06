@@ -1,5 +1,5 @@
-(setq user-full-name "JJ Kim"
-      user-mail-address "jj@haedosa.xyz")
+(setq user-full-name "syryu"
+      user-mail-address "sy.ryu@aurostech.com")
 
 (setq default-input-method "korean-hangul3f")
 

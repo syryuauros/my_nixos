@@ -17,8 +17,8 @@
   #   mynerdfonts
   # ;
 in {
-  # home.username = "syryu@auros";
-  # home.homeDirectory = "/home/auros";
+  home.username = "syryu@auros";
+  home.homeDirectory = "/home/auros";
 
   programs.home-manager.enable = true;
   programs.jq.enable = true;
@@ -28,7 +28,7 @@ in {
 
   imports = [
     inputs.myxmonad.homeManagerModules.default
-   # inputs.nix-doom-emacs.hmModule
+    inputs.nix-doom-emacs.hmModule
   ];
   mysystem.windowManager.xmonad.enable = true;
 
@@ -62,20 +62,20 @@ in {
   #   # inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
   # ];
 
-  # imports = [
-  #   inputs.nix-doom-emacs.hmModule
-  # ];
+#  imports = [
+#    inputs.nix-doom-emacs.hmModule
+#  ];
 
-  #programs.doom-emacs = {
-  #  enable = true;
-  #  doomPrivateDir = ./packages/doom-private;
-  #  doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-  #    # straight needs a (possibly empty) `config.el` file to build
-  #    { name = "config.el"; path = pkgs.emptyFile; }
-  #    { name = "init.el"; path = ./packages/doom-private/init.el; }
-  #    { name = "packages.el"; path = ./packages/doom-private/packages.el; }
-  #  ];
-  #};
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./packages/doom-private;
+    doomPackageDir = pkgs.linkFarm "my-doom-packages" [
+      # straight needs a (possibly empty) `config.el` file to build
+      { name = "config.el"; path = pkgs.emptyFile; }
+      { name = "init.el"; path = ./packages/doom-private/init.el; }
+      { name = "packages.el"; path = ./packages/doom-private/packages.el; }
+    ];
+  };
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
