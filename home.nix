@@ -9,8 +9,16 @@
     });
 
   mynerdfonts = pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; };
+  # mypackages = inputs.self.packages.${pkgs.system};
 
+  # inherit (mypackages)
+  #   noto-sans-kr
+  #   seoul-hangan
+  #   mynerdfonts
+  # ;
 in {
+  # home.username = "syryu@auros";
+  # home.homeDirectory = "/home/auros";
 
   programs.home-manager.enable = true;
   programs.jq.enable = true;
@@ -20,18 +28,31 @@ in {
 
   imports = [
     inputs.myxmonad.homeManagerModules.default
-    inputs.nix-doom-emacs.hmModule
+   # inputs.nix-doom-emacs.hmModule
   ];
   mysystem.windowManager.xmonad.enable = true;
 
   home.packages = [
   pkgs. ripgrep
   pkgs.hyperfine
-    mynerdfonts
-    mytex
+  mynerdfonts
+  mytex
   pkgs.kolourpaint
   inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
-  ];
+  #fonts
+  # noto-sans-kr
+  # # noto-serif-kr
+  # # nerdfonts
+  # pkgs.symbola
+  # seoul-hangan
+  # mynerdfonts
+  # pkgs.noto-fonts-cjk
+  # # noto-fonts
+  # pkgs.material-design-icons
+  # pkgs.weather-icons
+  # pkgs.font-awesome
+  # pkgs.emacs-all-the-icons-fonts
+];
   # home.packages = with pkgs;[
   #   ripgrep
   #   hyperfine
@@ -45,16 +66,16 @@ in {
   #   inputs.nix-doom-emacs.hmModule
   # ];
 
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./packages/doom-private;
-    doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-      # straight needs a (possibly empty) `config.el` file to build
-      { name = "config.el"; path = pkgs.emptyFile; }
-      { name = "init.el"; path = ./packages/doom-private/init.el; }
-      { name = "packages.el"; path = ./packages/doom-private/packages.el; }
-    ];
-  };
+  #programs.doom-emacs = {
+  #  enable = true;
+  #  doomPrivateDir = ./packages/doom-private;
+  #  doomPackageDir = pkgs.linkFarm "my-doom-packages" [
+  #    # straight needs a (possibly empty) `config.el` file to build
+  #    { name = "config.el"; path = pkgs.emptyFile; }
+  #    { name = "init.el"; path = ./packages/doom-private/init.el; }
+  #    { name = "packages.el"; path = ./packages/doom-private/packages.el; }
+  #  ];
+  #};
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;

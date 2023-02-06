@@ -5,16 +5,16 @@
       url = "github:nix-community/home-manager/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils/master";
-    myxmonad.url = "github:jjdosa/myxmonad";
+    flake-utils.url = "github:numtide/flake-utils/main";
+    myxmonad.url = "github:syryuauros/myxmonad";
     doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
-    nix-doom-emacs = {
-      url = "github:jjdosa/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # nix-doom-emacs.url = "github:jjdosa/nix-doom-emacs";
-    # nix-doom-emacs.inputs.doom-private.follows = "doom-private";
+    #nix-doom-emacs = {
+    #  url = "github:jjdosa/nix-doom-emacs";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+    nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
+    nix-doom-emacs.inputs.doom-private.follows = "doom-private";
   };
 
   outputs = inputs:
@@ -24,28 +24,30 @@
         inherit system;
         overlays = [
           # inputs.nix-doom-emacs.overlays.default
-          #inputs.nix-doom-emacs.overlay
+          inputs.nix-doom-emacs.overlay
               (final: prve: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
               })
         ];  };
       pkgs = import inputs.nixpkgs nixpkgs;
+
+      inherit (inputs.nixpkgs.lib) genAttrs;
+      supportedSystems = [ "x86_64-linux" ];
+      forAllSystems = genAttrs supportedSystems;
     in
     {
+    packages = forAllSystems (import ./packages inputs);
+    # packages = import ./packages { inherit inputs system; };
+
     homeConfigurations = {
       auros =  inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";  #https://discourse.nixos.org/t/fn-homemanagerconfiguration-missing-arg-system-but-why/21192
-
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-          home.username = "syryu@auros";
-          home.homeDirectory = "/home/auros";
-        modules = [
-          ./home.nix
-         ];
-        extraSpecialArgs = {
-          inherit inputs;
-        };
+        #home.username = "syryu@auros";
+        #home.homeDirectory = "/home/auros";
+        modules = [ ./home.nix ];
+        extraSpecialArgs = {  inherit inputs; };
        };
     };
 
@@ -58,9 +60,9 @@
             services.emacs = {
               enable = true;
               package = pkgs.doom-emacs;
-              # client.enable = true;
-            };
-          })
+               # client.enable = true;
+             };
+           })
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
