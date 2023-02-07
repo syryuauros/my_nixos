@@ -67,7 +67,7 @@ in {
 #  ];
 
   programs.doom-emacs = {
-    enable = false;
+    enable = true;
     doomPrivateDir = ./packages/doom-private;
     doomPackageDir = pkgs.linkFarm "my-doom-packages" [
       # straight needs a (possibly empty) `config.el` file to build
