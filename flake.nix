@@ -24,8 +24,8 @@
         inherit system;
         overlays = [
           # inputs.nix-doom-emacs.overlays.default
-          inputs.nix-doom-emacs.overlay
-              (final: prve: {
+          # inputs.nix-doom-emacs.overlay
+              # (final: prve: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
               })
         ];  };
