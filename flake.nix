@@ -25,7 +25,7 @@
         overlays = [
           # inputs.nix-doom-emacs.overlays.default
           # inputs.nix-doom-emacs.overlay
-              # (final: prve: {
+              (final: prve: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
               })
         ];  };

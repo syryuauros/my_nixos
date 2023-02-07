@@ -3,3 +3,4 @@
 *.log
 tmp/
 result
+packages/doom-private/config.el
