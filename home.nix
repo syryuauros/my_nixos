@@ -113,6 +113,14 @@ in {
     };
   };
 
+  programs.tmux = {
+    enable = true;
+    terminal = "tmux-256color";
+    extraConfig = ''
+      set-option -ga terminal-overrides ",*256col*:Tc:RGB"
+    '';
+  };
+
   programs.brave = {
     enable = true;
     extensions = [
@@ -164,6 +172,7 @@ in {
     p = "pushd";
     d = "dirs -v";
     o = "xdg-open";
+    xterm="xterm +132 -fg grey70 -bg grey20 -fa 'Monospace' -fs 11";
   };
 
   home.sessionVariables = {

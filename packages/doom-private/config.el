@@ -20,9 +20,6 @@
 
 (setq doom-theme 'doom-one)
 
-(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
-      doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
-      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
 
 (setq display-line-numbers-type t)
 
@@ -114,28 +111,7 @@
     )
   )
 
-  (defun my/org-capture()
-    (setq org-capture-templates `(
-      ("h" "Haedosa" entry
-        (file+olp+datetree ,(concat org-directory "/haedosa/README.org"))
-        "* %? %U\n%a\n%i"
-      )
-      ("m" "Memo" entry
-        (file+olp+datetree ,(concat org-directory "/memo/memo.org"))
-        "* %? %U\n%a\n%i"
-      )
-      ("s" "Self" entry
-        (file+olp+datetree ,(function buffer-file-name))
-        "* %? %U\n%a\n%i"
-      )
-  )))
-
-  (defun my/org-agenda()
-    (setq org-agenda-files
-       (list
-          (concat org-directory "/haedosa/README.org")
-          (concat org-directory "/memo/memo.org")
-       )
+  (defun my/org-capture() (setq org-capture-templates `(("h" "Haedosa" entry (file+olp+datetree ,(concat org-directory "/haedosa/README.org")) "* %? %U\n%a\n%i") ("m" "Memo" entry (file+olp+datetree ,(concat org-directory "/memo/memo.org")) "* %? %U\n%a\n%i") ("s" "Self" entry (file+olp+datetree ,(function buffer-file-name)) "* %? %U\n%a\n%i")))) (defun my/org-agenda() (setq org-agenda-files (list (concat org-directory "/haedosa/README.org") (concat org-directory "/memo/memo.org"))
     )
 
     (setq org-agenda-ndays 7
