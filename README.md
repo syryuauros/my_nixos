@@ -1,0 +1,3 @@
+If 'emacs' has problem...
+
+try to delete /home/[user_name]/.emacs.d/  and  /home/[user_name]/.cache/doom/ and /home/[user_name]/.cache/[files_name_has_string_doom]
