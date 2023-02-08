@@ -173,6 +173,7 @@ in {
     d = "dirs -v";
     o = "xdg-open";
     xterm="xterm +132 -fg grey70 -bg grey20 -fa 'Monospace' -fs 11";
+    #xterm color name https://www.ditig.com/256-colors-cheat-sheet, $ xterm -help
     tmux="xterm +132 -fg grey70 -bg grey20 -fa 'Mnospace' -fs 11 -e tmux";
   };
 
