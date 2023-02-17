@@ -66,6 +66,8 @@ in {
 #    inputs.nix-doom-emacs.hmModule
 #  ];
 
+  services.flameshot.enable = true;
+
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./packages/doom-private;
