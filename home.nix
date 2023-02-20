@@ -129,8 +129,18 @@ in {
       { id = "gfbliohnnapiefjpjlpjnehglfpaknnc"; } # surfingkeys
       { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
+  #    { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # onetab
+      { id = "lhkgpdljnlplgbkonflbhifackjhjmdj"; } # prompt genie
     ];
   };
+  # extensions ID check (below, answer from chatgpt)
+  # Open Chrome and go to the URL chrome://extensions
+  # Enable "Developer mode" by clicking the toggle switch in the upper right corner.
+  # Find the extension you want the ID for and click on the "Details" button.
+  # The ID for the extension will be listed on the extension details page. It is a long string of letters and numbers.
+  # Alternatively, you can right-click on the extension icon in the Chrome toolbar and select "Manage extensions". This will take you to the "chrome://extensions" page and you can follow the steps above to find the extension ID.
+
+
 
   programs.git = {
     enable = true;
