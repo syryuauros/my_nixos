@@ -16,6 +16,7 @@
   #   seoul-hangan
   #   mynerdfonts
   # ;
+
 in {
   home.username = "syryu@auros";
   home.homeDirectory = "/home/auros";

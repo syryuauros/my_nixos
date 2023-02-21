@@ -34,6 +34,14 @@
       inherit (inputs.nixpkgs.lib) genAttrs;
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = genAttrs supportedSystems;
+      hds1-wireguard = import ./wireguard.nix {
+        name = "hds1";
+        port = 51820;
+        wg-key = "UGN+tylsszZUiPyoYF8n0wkOfkmsQQWHHeVHdJTsRVY=";
+        wg-ips = [ "20.20.20.20/32" ];
+        allowedIPs = [ "20.20.0.0/16" ];
+      };
+
     in
     {
     packages = forAllSystems (import ./packages inputs);
@@ -77,6 +85,7 @@
           #   # Optionally, use home-manager.extraSpecialArgs to pass
           #   # arguments to home.nix
           # }
+          hds1-wireguard
           (import ./configuration.nix)
         ];
       };
