@@ -11,21 +11,18 @@
   mynerdfonts = pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; };
   mypackages = inputs.self.packages.${pkgs.system};
 
-<<<<<<< Updated upstream
   # inherit (mypackages)
   #   noto-sans-kr
   #   seoul-hangan
   #   mynerdfonts
   # ;
 
-=======
   inherit (mypackages)
     noto-sans-kr
     noto-serif-kr
     seoul-hangan
     # mynerdfonts
   ;
->>>>>>> Stashed changes
 in {
   home.username = "syryu@auros";
   home.homeDirectory = "/home/auros";
