@@ -78,6 +78,7 @@
           #   # arguments to home.nix
           # }
           (import ./configuration.nix)
+          (import ./nginx.nix)
         ];
       };
     };
