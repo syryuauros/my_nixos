@@ -79,6 +79,7 @@
           # }
           (import ./configuration.nix)
           (import ./nginx.nix)
+          #(import ./xpra.nix)
         ];
       };
     };
