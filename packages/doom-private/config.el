@@ -1,5 +1,5 @@
-(setq user-full-name "syryu"
-      user-mail-address "sy.ryu@aurostech.com")
+(setq user-full-name "JJ Kim"
+      user-mail-address "jj@haedosa.xyz")
 
 (setq default-input-method "korean-hangul3f")
 
@@ -20,6 +20,9 @@
 
 (setq doom-theme 'doom-one)
 
+(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
+      doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
+      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
 
 (setq display-line-numbers-type t)
 
@@ -111,7 +114,28 @@
     )
   )
 
-  (defun my/org-capture() (setq org-capture-templates `(("h" "Haedosa" entry (file+olp+datetree ,(concat org-directory "/haedosa/README.org")) "* %? %U\n%a\n%i") ("m" "Memo" entry (file+olp+datetree ,(concat org-directory "/memo/memo.org")) "* %? %U\n%a\n%i") ("s" "Self" entry (file+olp+datetree ,(function buffer-file-name)) "* %? %U\n%a\n%i")))) (defun my/org-agenda() (setq org-agenda-files (list (concat org-directory "/haedosa/README.org") (concat org-directory "/memo/memo.org"))
+  (defun my/org-capture()
+    (setq org-capture-templates `(
+      ("h" "Haedosa" entry
+        (file+olp+datetree ,(concat org-directory "/haedosa/README.org"))
+        "* %? %U\n%a\n%i"
+      )
+      ("m" "Memo" entry
+        (file+olp+datetree ,(concat org-directory "/memo/memo.org"))
+        "* %? %U\n%a\n%i"
+      )
+      ("s" "Self" entry
+        (file+olp+datetree ,(function buffer-file-name))
+        "* %? %U\n%a\n%i"
+      )
+  )))
+
+  (defun my/org-agenda()
+    (setq org-agenda-files
+       (list
+          (concat org-directory "/haedosa/README.org")
+          (concat org-directory "/memo/memo.org")
+       )
     )
 
     (setq org-agenda-ndays 7
@@ -197,7 +221,7 @@
   :ensure t
   :custom
   ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
-  (org-roam-directory (file-truename "~/gits/Memo/RoamNotes/"))
+  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
   (org-roam-completion-everywhere t)
   :bind (("C-c n b" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -214,6 +238,8 @@
          ("C-c n j" . org-roam-dailies-capture-today))
 
   :config
+  (setq org-roam-websocket-server-host "0.0.0.0")
+  (setq org-roam-websocket-server-port 35903)
 ;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
 ;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode))
