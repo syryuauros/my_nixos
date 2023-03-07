@@ -238,8 +238,6 @@
          ("C-c n j" . org-roam-dailies-capture-today))
 
   :config
-  (setq org-roam-websocket-server-host "0.0.0.0")
-  (setq org-roam-websocket-server-port 35903)
 ;;   ;; If you're using a vertical completion framework, you might want a more informative completion interface
 ;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode))
@@ -260,6 +258,14 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
+
+    ;; (setq org-roam-ui-ws-server
+    ;;       (websocket-server
+    ;;        35903
+    ;;        :host '192.168.12.135
+    ;;        :on-open 'org-roam-ui--ws-on-open
+    ;;        :on-message 'org-roam-ui--ws-on-message
+    ;;        :on-close 'org-roam-ui--ws-on-close))
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
