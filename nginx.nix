@@ -8,8 +8,8 @@
         proxyPass = "http://localhost:35901";
         #proxyWebsockets = true;
       };
-      locations."/ws" = {
-        proxyPass = "http://192.168.12.135:35903";
+      locations."/ws/" = {
+        proxyPass = "http://localhost:35903";
         proxyWebsockets = true;
       };
 
