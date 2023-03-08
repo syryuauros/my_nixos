@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./nixosConfigurations/v15/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -39,15 +39,12 @@
       keep-outputs = true
       keep-derivations = true
     '';
-    trustedUsers = [ "root" "@admin" "@wheel" ];
-    # settings.trustedUsers = [ "root" "@admin" "@wheel" ];
-    #binaryCaches = [
+    settings.trusted-users = [ "root" "@admin" "@wheel" ];
     settings.substituters = [
       "https://cache.nixos.org/"
       "https://cachix.cachix.org"
       "https://nix-community.cachix.org"
     ];
-    #binaryCachePublicKeys = [
     settings.trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
@@ -106,6 +103,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
 
   # Enable the GNOME Desktop Environment.
@@ -123,6 +121,7 @@
   # Enable sound.
     sound.enable = true;
     hardware.pulseaudio.enable = true;
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -194,6 +193,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }

@@ -64,29 +64,52 @@
         inherit system;
         modules = [
           ({ inherit nixpkgs;})
-          # ({pkgs, ...} :{
-          #   services.emacs = {
-          #     enable = true;
-          #     package = pkgs.doom-emacs;
-          #      # client.enable = true;
-          #    };
-          #  })
-          # inputs.home-manager.nixosModules.home-manager
-          # {
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-          #   home-manager.users.auros = import ./home.nix;
-          #   home-manager.extraSpecialArgs = {
-          #     inherit inputs;
-          #   };
-
-          #   #home-manager.users.auros.home.stateVersion = "22.11";
-
-          #   # Optionally, use home-manager.extraSpecialArgs to pass
-          #   # arguments to home.nix
-          # }
           hds1-wireguard
           (import ./configuration.nix)
+        ];
+      };
+      v15 = inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ({ inherit nixpkgs;})
+          (import ./nixosConfigurations/v15/configuration.nix)
+        ];
+      };
+      usb = inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ({modulesPath, ... }: {
+            imports = [
+              (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
+            ];
+          })
+          ( {config, ...}: {
+            users.users.auros = {
+              isNormalUser = true;
+              uid = 1000;
+              home = "/home/auros";
+              extraGroups = [ "wheel" "networkmanager" ];
+            # to generate : nix-shell -p mkpasswd --run 'mkpasswd -m sha-512'
+              hashedPassword = "$6$4eILJE5YFY$RDB8ra1mdoFaPscoDnEgoQBI83StsUEVhwUp2mAWK0b082ocZ44hdLBlRTPt.6IayLqr/6wuwRCTpxAacfE56.";
+              openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwOvMlnEB1Qk2Aj/R7CcCSnzu3LlBrS6eh75IZzFEe4 auros"
+              ];
+            };
+
+            networking.networkmanager.enable = true;
+            systemd.services.NetworkManager-wait-online.enable = false;
+
+            nix.settings.trusted-users = [
+              "auros" "root" "@admin" "@wheel"
+            ];
+
+            # Enable the OpenSSH daemon.
+            services.openssh.enable = true;
+            services.openssh.settings.X11forwarding = true;
+            services.openssh.settings.PermitRootLogin = "yes";
+
+            users.users.root.openssh.authorizedKeys.keys = config.users.extraUsers.auros.openssh.authorizedKeys.keys;
+          })
         ];
       };
     };
