@@ -20,9 +20,12 @@
 
 (setq doom-theme 'doom-one)
 
-(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
-      doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
-      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
+;;(setq doom-font (font-spec :family "Mononoki Nerd Font Mono" :size 22)
+;;      doom-big-font (font-spec :family "Mononoki Nerd Font Mono" :size 36)
+;;      doom-variable-pitch-font (font-spec :family "Mononoki Nerd Font Mono" :size 22))
+;;(setq doom-font (font-spec :family "mynerdfonts" :size 22)
+;;      doom-big-font (font-spec :family "mynerdfonts" :size 36)
+;;      doom-variable-pitch-font (font-spec :family "mynerdfonts" :size 22))
 
 (setq display-line-numbers-type t)
 
@@ -221,7 +224,7 @@
   :ensure t
   :custom
   ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
-  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
+  (org-roam-directory (file-truename "~/gits/Memo/RoamNotes/"))
   (org-roam-completion-everywhere t)
   :bind (("C-c n b" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -258,14 +261,6 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
-
-    ;; (setq org-roam-ui-ws-server
-    ;;       (websocket-server
-    ;;        35903
-    ;;        :host '192.168.12.135
-    ;;        :on-open 'org-roam-ui--ws-on-open
-    ;;        :on-message 'org-roam-ui--ws-on-message
-    ;;        :on-close 'org-roam-ui--ws-on-close))
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)

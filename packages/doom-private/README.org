@@ -802,7 +802,7 @@ causes conflict in syncing files between linux and mac.
   :ensure t
   :custom
   ;; (org-roam-directory (file-truename "https://github.com/syryuauros/Memo/tree/main/RoamNotes"))
-  (org-roam-directory (file-truename "~/Dropbox/RoamNotes/"))
+  (org-roam-directory (file-truename "~/gits/Memo/RoamNotes/"))
   (org-roam-completion-everywhere t)
   :bind (("C-c n b" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
@@ -853,6 +853,42 @@ causes conflict in syncing files between linux and mac.
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
+
+#+end_src
+
+*** Org imghttp
+
+#+begin_src emacs-lisp :tangle packages.el
+
+;; (unpin! org-roam)
+(package! org-yt)
+
+#+end_src
+
+#+begin_src emacs-lisp
+
+
+((defun org-image-link (protocol link _description)
+  "Interpret LINK as base64-encoded image data."
+  (cl-assert (string-match "\\`img" protocol) nil
+             "Expected protocol type starting with img")
+  (let ((buf (url-retrieve-synchronously (concat (substring protocol 3) ":" link))))
+    (cl-assert buf nil
+               "Download of image \"%s\" failed." link)
+    (with-current-buffer buf
+      (goto-char (point-min))
+      (re-search-forward "\r?\n\r?\n")
+      (buffer-substring-no-properties (point) (point-max)))))
+
+(org-link-set-parameters
+ "imghttp"
+ :image-data-fun #'org-image-link)
+
+(org-link-set-parameters
+ "imghttps"
+ :image-data-fun #'org-image-link)use-package! websocket
+    :after org-roam)
+
 
 #+end_src
 
