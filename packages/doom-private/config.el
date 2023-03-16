@@ -474,3 +474,14 @@
 
   (map! :leader "r" #'consult-ripgrep)
   (map! "C-,"       #'lsp-execute-code-action)
+
+;; https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcLlKON%2FbtqA5Q9EV4Z%2FfALkx9YTCXmxRoe7rMpQC0%2Fimg.png
+(defun org-custom-link-img-follow (path)
+(org-link-open-from-string path))
+
+(defun org-custom-link-img-export (path desc format)
+(cond
+((eq format 'html)
+(format "<img src=\"%s\" alt=\"%s\"/>" path desc))))
+
+(org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
