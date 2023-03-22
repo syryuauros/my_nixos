@@ -10,7 +10,7 @@
         #root = "/home/auros/gits/shapemaster/daily/test2.html";
         #proxyWebsockets = true;
         };
-      locations."/ws/" = {
+      locations."/ws" = {
         proxyPass = "http://localhost:35903";
         proxyWebsockets = true;
         };
@@ -33,3 +33,12 @@
 # http://brownbears.tistory.com/191 -- reverse proxy server concepts
 # https://soojong.tistory.com/entry/Nginx%EB%A1%9C-%EC%A0%95%EC%A0%81-%EC%BB%A8%ED%85%90%EC%B8%A0-%EC%A0%9C%EA%B3%B5%ED%95%98%EA%B8%B0
 # https://velog.io/@devjooj/Server-Ngnix-%EC%99%9C-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C
+# https://velog.io/@0307kwon/%EC%9B%B9%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%A0%EA%B9%8C-1.-%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80%EB%A5%BC-%EB%B3%B4%EA%B8%B0%EA%B9%8C%EC%A7%80
+# https://velog.io/@bky373/Web-%EC%9B%B9-%EC%84%9C%EB%B2%84%EC%99%80-WAS
+#https://blog.toycrane.xyz/web-was-%EC%84%9C%EB%B2%84%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-34861e69ac4e
+#https://yoonjong-park.tistory.com/entry/php-%EC%99%80-javascript-%EC%B0%A8%EC%9D%B4-%EC%83%81%ED%98%B8-%EA%B0%84%EC%9D%98-%ED%98%B8%EC%B6%9C-%EB%B0%A9%EB%B2%95
+#https://blex.me/@baealex/php%EC%97%90%EC%84%9C-ajax-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+#https://sojinhwan0207.tistory.com/145
+#https://tecoble.techcourse.co.kr/post/2021-08-14-web-socket/
+#https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%86%8C%EC%BC%93-Socket-%EC%97%AD%EC%82%AC%EB%B6%80%ED%84%B0-%EC%A0%95%EB%A6%AC
+#

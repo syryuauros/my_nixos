@@ -260,7 +260,15 @@
     (setq org-roam-ui-sync-theme t
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+          org-roam-ui-open-on-start t
+          org-roam-ui-ws-server
+          (websocket-server
+           35903
+           :host 'local
+           :on-open #'org-roam-ui--ws-on-open
+           :on-message #'org-roam-ui--ws-on-message
+           :on-close #'org-roam-ui--ws-on-close)
+          ))
 
 (setq-default tab-width 2)
 (setq-default evil-shift-width tab-width)
