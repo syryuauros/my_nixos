@@ -1,6 +1,6 @@
 #+title: Remote Install
 
-* making 'Install USB'
+* making 'Install USB' /control computer/
 **  build iso-image version of install OS
 - $ nix build .#nixosConfigurations.[install-OS-name].config.system.build.isoImage
   # nix repl >> :lf . >> [tab] searching
@@ -17,14 +17,53 @@
 - $ umount [device-name-of-mounted-usb]
 - Eject the usb from computer
 
-* build nixos-configuration for target computer
+* build nixos-configuration for target computer /control computer/
 ** build target OS image
 - $ nix build .#nixosConfigurations.[target-OS-name].config.system.build.toplevel
 - ls -lah
-  # result -> [real-path-of-install-OS]
+  # result -> [real-path-of-target-OS]
 
-* target computer setting
+* target computer setting /target computer/
+** hardware setting
+- internet line connection, install USB insert
+- bios setup for usb booting (sometimes it needs to 'disable' [Secure Boot])
 
-* nix copy
+** format partitions (Gparted)
+- 'Gparted'
+- delete all partitions
+- making 'BOOT' partition
+  preceding 1MiB, size: 512MiB, Primary Partitions, no Partition name, fat32, Label: BOOT
+- making 'root' partition
+  preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition name, ext4, Label: root
+- Apply
+- Manage flags: set 'BOOT' partitions as 'esp' & 'boot'
 
-* nixos-install
+** internet connection confirm & get IP address
+- open 'terminal'
+- $ ifconfig
+  # check the ip address
+- $ ping google.com
+  # internet connection check
+
+** mount 'root' & 'BOOT' partition
+- $ sudo su
+- # mount /dev/disk/by-label/root /mnt
+- # mkdir /mnt/boot
+- # mount /dev/disk/by-label/BOOT /mnt/boot
+
+* nix copy /control computer/
+** ssh connection test
+- $ ssh root@[target-computer-IP]
+# check the user information of the target OS configuration, and check the openssh.authorizedKeys.keys
+# authorizedKeys.keys has to be same with the public ssh key of /control computer/
+- {ssh}$ exit
+
+** nix copy to /target computer/
+- $ nix copy [real-path-of-target-OS] --to "ssh-ng://root@[target-computer-IP]?remote-store=/mnt" --no-check-sigs
+
+* nixos-install /target computer/
+** nixos-install
+- confirm the result of 'nix copy' >> $ ls /mnt/nix/store/[real-path-of-target-OS]
+- # nixos-install --system /nix/store/[real-path-of-target-OS]
+- # reboot
+- Eject 'install USB'
