@@ -75,6 +75,10 @@
 # if finger print warning, then delete the ~/.ssh/knownhosts at /control computer/
 
 * apply home-manager /target computer/
+** generate hardware-configuration.nix
+- $ sudo su
+- # nixos-generate-config
+
 ** git clone 'my-nixos'
 
 ** apply home-manager
