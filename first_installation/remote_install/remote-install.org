@@ -67,3 +67,17 @@
 - # nixos-install --system /nix/store/[real-path-of-target-OS]
 - # reboot
 - Eject 'install USB'
+
+
+* ssh-key copy (if it needs to have same authority) /control computer/
+** ~./ssh copy from /control computer/ to /target computer/
+- scp -r ~/.ssh [user-name]@[target-computer-IP]:/home/[user-name]/.ssh
+# if finger print warning, then delete the ~/.ssh/knownhosts at /control computer/
+
+* apply home-manager /target computer/
+** git clone 'my-nixos'
+
+** apply home-manager
+- $ nix flake update
+- $ nix develop
+- $ home-manager switch --flake .#[home-configuration-name]
