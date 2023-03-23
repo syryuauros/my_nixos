@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-03-23 Thu 18:11 -->
+<!-- 2023-03-23 Thu 18:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Remote Install</title>
@@ -201,58 +201,59 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0639324">1. making &rsquo;Install USB&rsquo; <i>control computer</i></a>
+<li><a href="#org5bb96e7">1. making &rsquo;Install USB&rsquo; <i>control computer</i></a>
 <ul>
-<li><a href="#orga03d047">1.1. build iso-image version of install OS</a></li>
-<li><a href="#org5d7d731">1.2. copy install OS to the usb</a></li>
-<li><a href="#orgfa2a84e">1.3. eject the usb</a></li>
+<li><a href="#orgbc379c3">1.1. build iso-image version of install OS</a></li>
+<li><a href="#org99ea0da">1.2. copy install OS to the usb</a></li>
+<li><a href="#org6b6afce">1.3. eject the usb</a></li>
 </ul>
 </li>
-<li><a href="#orgda324ee">2. build nixos-configuration for target computer <i>control computer</i></a>
+<li><a href="#org49e3a63">2. build nixos-configuration for target computer <i>control computer</i></a>
 <ul>
-<li><a href="#org62b8bda">2.1. build target OS image</a></li>
+<li><a href="#org7b74faa">2.1. build target OS image</a></li>
 </ul>
 </li>
-<li><a href="#org298b4e6">3. target computer setting <i>target computer</i></a>
+<li><a href="#orged4a7a3">3. target computer setting <i>target computer</i></a>
 <ul>
-<li><a href="#org9025d68">3.1. hardware setting</a></li>
-<li><a href="#org94bf4da">3.2. format partitions (Gparted)</a></li>
-<li><a href="#org3511177">3.3. internet connection confirm &amp; get IP address</a></li>
-<li><a href="#orga783c25">3.4. mount &rsquo;root&rsquo; &amp; &rsquo;BOOT&rsquo; partition</a></li>
+<li><a href="#org2092d6b">3.1. hardware setting</a></li>
+<li><a href="#org091a891">3.2. format partitions (Gparted)</a></li>
+<li><a href="#org637660f">3.3. internet connection confirm &amp; get IP address</a></li>
+<li><a href="#org3a765a7">3.4. mount &rsquo;root&rsquo; &amp; &rsquo;BOOT&rsquo; partition</a></li>
 </ul>
 </li>
-<li><a href="#org1cf822a">4. nix copy <i>control computer</i></a>
+<li><a href="#org325bb0a">4. nix copy <i>control computer</i></a>
 <ul>
-<li><a href="#org394e6c1">4.1. ssh connection test</a></li>
-<li><a href="#org7865cd9">4.2. nix copy to <i>target computer</i></a></li>
+<li><a href="#orgba32c19">4.1. ssh connection test</a></li>
+<li><a href="#org2890c11">4.2. nix copy to <i>target computer</i></a></li>
 </ul>
 </li>
-<li><a href="#orgf0e2235">5. nixos-install <i>target computer</i></a>
+<li><a href="#org376d545">5. nixos-install <i>target computer</i></a>
 <ul>
-<li><a href="#org31109bb">5.1. nixos-install</a></li>
+<li><a href="#org724b07a">5.1. nixos-install</a></li>
 </ul>
 </li>
-<li><a href="#org9217e0d">6. ssh-key copy (if it needs to have same authority) <i>control computer</i></a>
+<li><a href="#orgdfe491f">6. ssh-key copy (if it needs to have same authority) <i>control computer</i></a>
 <ul>
-<li><a href="#org5f285f7">6.1. ~./ssh copy from <i>control computer</i> to <i>target computer</i></a></li>
+<li><a href="#orgbc27255">6.1. ~./ssh copy from <i>control computer</i> to <i>target computer</i></a></li>
 </ul>
 </li>
-<li><a href="#orgaa14964">7. apply home-manager <i>target computer</i></a>
+<li><a href="#orgba59b7d">7. apply home-manager <i>target computer</i></a>
 <ul>
-<li><a href="#orgf983da9">7.1. git clone &rsquo;my-nixos&rsquo;</a></li>
-<li><a href="#orge847fd3">7.2. apply home-manager</a></li>
+<li><a href="#org727dafc">7.1. generate hardware-configuration.nix</a></li>
+<li><a href="#org9f96ed9">7.2. git clone &rsquo;my-nixos&rsquo;</a></li>
+<li><a href="#org5fe89d1">7.3. apply home-manager</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0639324" class="outline-2">
-<h2 id="org0639324"><span class="section-number-2">1.</span> making &rsquo;Install USB&rsquo; <i>control computer</i></h2>
+<div id="outline-container-org5bb96e7" class="outline-2">
+<h2 id="org5bb96e7"><span class="section-number-2">1.</span> making &rsquo;Install USB&rsquo; <i>control computer</i></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga03d047" class="outline-3">
-<h3 id="orga03d047"><span class="section-number-3">1.1.</span> build iso-image version of install OS</h3>
+<div id="outline-container-orgbc379c3" class="outline-3">
+<h3 id="orgbc379c3"><span class="section-number-3">1.1.</span> build iso-image version of install OS</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>$ nix build .#nixosConfigurations.[install-OS-name].config.system.build.isoImage</li>
@@ -261,8 +262,8 @@
 </div>
 </div>
 
-<div id="outline-container-org5d7d731" class="outline-3">
-<h3 id="org5d7d731"><span class="section-number-3">1.2.</span> copy install OS to the usb</h3>
+<div id="outline-container-org99ea0da" class="outline-3">
+<h3 id="org99ea0da"><span class="section-number-3">1.2.</span> copy install OS to the usb</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>$ lsblk (confirm [device-name-of-usb] and &rsquo;mount state&rsquo;)</li>
@@ -272,8 +273,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgfa2a84e" class="outline-3">
-<h3 id="orgfa2a84e"><span class="section-number-3">1.3.</span> eject the usb</h3>
+<div id="outline-container-org6b6afce" class="outline-3">
+<h3 id="org6b6afce"><span class="section-number-3">1.3.</span> eject the usb</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>$ lsblk (confirm &rsquo;mount state&rsquo;)</li>
@@ -284,12 +285,12 @@
 </div>
 </div>
 
-<div id="outline-container-orgda324ee" class="outline-2">
-<h2 id="orgda324ee"><span class="section-number-2">2.</span> build nixos-configuration for target computer <i>control computer</i></h2>
+<div id="outline-container-org49e3a63" class="outline-2">
+<h2 id="org49e3a63"><span class="section-number-2">2.</span> build nixos-configuration for target computer <i>control computer</i></h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org62b8bda" class="outline-3">
-<h3 id="org62b8bda"><span class="section-number-3">2.1.</span> build target OS image</h3>
+<div id="outline-container-org7b74faa" class="outline-3">
+<h3 id="org7b74faa"><span class="section-number-3">2.1.</span> build target OS image</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>$ nix build .#nixosConfigurations.[target-OS-name].config.system.build.toplevel</li>
@@ -299,12 +300,12 @@
 </div>
 </div>
 
-<div id="outline-container-org298b4e6" class="outline-2">
-<h2 id="org298b4e6"><span class="section-number-2">3.</span> target computer setting <i>target computer</i></h2>
+<div id="outline-container-orged4a7a3" class="outline-2">
+<h2 id="orged4a7a3"><span class="section-number-2">3.</span> target computer setting <i>target computer</i></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org9025d68" class="outline-3">
-<h3 id="org9025d68"><span class="section-number-3">3.1.</span> hardware setting</h3>
+<div id="outline-container-org2092d6b" class="outline-3">
+<h3 id="org2092d6b"><span class="section-number-3">3.1.</span> hardware setting</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>internet line connection, install USB insert</li>
@@ -313,8 +314,8 @@
 </div>
 </div>
 
-<div id="outline-container-org94bf4da" class="outline-3">
-<h3 id="org94bf4da"><span class="section-number-3">3.2.</span> format partitions (Gparted)</h3>
+<div id="outline-container-org091a891" class="outline-3">
+<h3 id="org091a891"><span class="section-number-3">3.2.</span> format partitions (Gparted)</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>&rsquo;Gparted&rsquo;</li>
@@ -329,8 +330,8 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-org3511177" class="outline-3">
-<h3 id="org3511177"><span class="section-number-3">3.3.</span> internet connection confirm &amp; get IP address</h3>
+<div id="outline-container-org637660f" class="outline-3">
+<h3 id="org637660f"><span class="section-number-3">3.3.</span> internet connection confirm &amp; get IP address</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>open &rsquo;terminal&rsquo;</li>
@@ -340,8 +341,8 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-orga783c25" class="outline-3">
-<h3 id="orga783c25"><span class="section-number-3">3.4.</span> mount &rsquo;root&rsquo; &amp; &rsquo;BOOT&rsquo; partition</h3>
+<div id="outline-container-org3a765a7" class="outline-3">
+<h3 id="org3a765a7"><span class="section-number-3">3.4.</span> mount &rsquo;root&rsquo; &amp; &rsquo;BOOT&rsquo; partition</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>$ sudo su</li>
@@ -353,12 +354,12 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-org1cf822a" class="outline-2">
-<h2 id="org1cf822a"><span class="section-number-2">4.</span> nix copy <i>control computer</i></h2>
+<div id="outline-container-org325bb0a" class="outline-2">
+<h2 id="org325bb0a"><span class="section-number-2">4.</span> nix copy <i>control computer</i></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org394e6c1" class="outline-3">
-<h3 id="org394e6c1"><span class="section-number-3">4.1.</span> ssh connection test</h3>
+<div id="outline-container-orgba32c19" class="outline-3">
+<h3 id="orgba32c19"><span class="section-number-3">4.1.</span> ssh connection test</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>$ ssh root@[target-computer-IP]</li>
@@ -370,8 +371,8 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-org7865cd9" class="outline-3">
-<h3 id="org7865cd9"><span class="section-number-3">4.2.</span> nix copy to <i>target computer</i></h3>
+<div id="outline-container-org2890c11" class="outline-3">
+<h3 id="org2890c11"><span class="section-number-3">4.2.</span> nix copy to <i>target computer</i></h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>$ nix copy [real-path-of-target-OS] &#x2013;to &ldquo;ssh-ng://root@[target-computer-IP]?remote-store=/mnt&rdquo; &#x2013;no-check-sigs</li>
@@ -380,12 +381,12 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-orgf0e2235" class="outline-2">
-<h2 id="orgf0e2235"><span class="section-number-2">5.</span> nixos-install <i>target computer</i></h2>
+<div id="outline-container-org376d545" class="outline-2">
+<h2 id="org376d545"><span class="section-number-2">5.</span> nixos-install <i>target computer</i></h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org31109bb" class="outline-3">
-<h3 id="org31109bb"><span class="section-number-3">5.1.</span> nixos-install</h3>
+<div id="outline-container-org724b07a" class="outline-3">
+<h3 id="org724b07a"><span class="section-number-3">5.1.</span> nixos-install</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>confirm the result of &rsquo;nix copy&rsquo; &gt;&gt; $ ls <i>mnt/nix/store</i>[real-path-of-target-OS]</li>
@@ -398,12 +399,12 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 
 
-<div id="outline-container-org9217e0d" class="outline-2">
-<h2 id="org9217e0d"><span class="section-number-2">6.</span> ssh-key copy (if it needs to have same authority) <i>control computer</i></h2>
+<div id="outline-container-orgdfe491f" class="outline-2">
+<h2 id="orgdfe491f"><span class="section-number-2">6.</span> ssh-key copy (if it needs to have same authority) <i>control computer</i></h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org5f285f7" class="outline-3">
-<h3 id="org5f285f7"><span class="section-number-3">6.1.</span> ~./ssh copy from <i>control computer</i> to <i>target computer</i></h3>
+<div id="outline-container-orgbc27255" class="outline-3">
+<h3 id="orgbc27255"><span class="section-number-3">6.1.</span> ~./ssh copy from <i>control computer</i> to <i>target computer</i></h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>scp -r ~/.ssh [user-name]@[target-computer-IP]:/home/[user-name]/.ssh</li>
@@ -412,17 +413,27 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </div>
 
-<div id="outline-container-orgaa14964" class="outline-2">
-<h2 id="orgaa14964"><span class="section-number-2">7.</span> apply home-manager <i>target computer</i></h2>
+<div id="outline-container-orgba59b7d" class="outline-2">
+<h2 id="orgba59b7d"><span class="section-number-2">7.</span> apply home-manager <i>target computer</i></h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orgf983da9" class="outline-3">
-<h3 id="orgf983da9"><span class="section-number-3">7.1.</span> git clone &rsquo;my-nixos&rsquo;</h3>
+<div id="outline-container-org727dafc" class="outline-3">
+<h3 id="org727dafc"><span class="section-number-3">7.1.</span> generate hardware-configuration.nix</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>$ sudo su</li>
+<li># nixos-generate-config</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-orge847fd3" class="outline-3">
-<h3 id="orge847fd3"><span class="section-number-3">7.2.</span> apply home-manager</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-org9f96ed9" class="outline-3">
+<h3 id="org9f96ed9"><span class="section-number-3">7.2.</span> git clone &rsquo;my-nixos&rsquo;</h3>
+</div>
+
+<div id="outline-container-org5fe89d1" class="outline-3">
+<h3 id="org5fe89d1"><span class="section-number-3">7.3.</span> apply home-manager</h3>
+<div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
 <li>$ nix flake update</li>
 <li>$ nix develop</li>
@@ -434,7 +445,7 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: syryu</p>
-<p class="date">Created: 2023-03-23 Thu 18:11</p>
+<p class="date">Created: 2023-03-23 Thu 18:18</p>
 </div>
 </body>
 </html>

@@ -15,7 +15,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Remote Install</h1><h2 class="author">syryu</h2><p class="date">Created: 2023-03-23 Thu 18:11</p>
+<h1 class="title">Remote Install</h1><h2 class="author">syryu</h2><p class="date">Created: 2023-03-23 Thu 18:18</p>
 </section>
 <section id="table-of-contents-section">
 <div id="table-of-contents" role="doc-toc">
@@ -60,8 +60,9 @@
 </li>
 <li><a href="#/slide-7">7. apply home-manager <i>target computer</i></a>
 <ul>
-<li><a href="#/slide-7-1">7.1. git clone &rsquo;my-nixos&rsquo;</a></li>
-<li><a href="#/slide-7-2">7.2. apply home-manager</a></li>
+<li><a href="#/slide-7-1">7.1. generate hardware-configuration.nix</a></li>
+<li><a href="#/slide-7-2">7.2. git clone &rsquo;my-nixos&rsquo;</a></li>
+<li><a href="#/slide-7-3">7.3. apply home-manager</a></li>
 </ul>
 </li>
 </ul>
@@ -242,11 +243,20 @@ preceding 0MiB, size: all the amount of remain, Primary Partitions, no Partition
 </div>
 </section>
 <section id="slide-7-1">
-<h3 id="7-1"><span class="section-number-3">7.1.</span> git clone &rsquo;my-nixos&rsquo;</h3>
+<h3 id="7-1"><span class="section-number-3">7.1.</span> generate hardware-configuration.nix</h3>
+<ul>
+<li>$ sudo su</li>
+<li># nixos-generate-config</li>
+
+</ul>
 
 </section>
 <section id="slide-7-2">
-<h3 id="7-2"><span class="section-number-3">7.2.</span> apply home-manager</h3>
+<h3 id="7-2"><span class="section-number-3">7.2.</span> git clone &rsquo;my-nixos&rsquo;</h3>
+
+</section>
+<section id="slide-7-3">
+<h3 id="7-3"><span class="section-number-3">7.3.</span> apply home-manager</h3>
 <ul>
 <li>$ nix flake update</li>
 <li>$ nix develop</li>
