@@ -1,0 +1,30 @@
+#+title: Remote Install
+
+* making 'Install USB'
+**  build iso-image version of install OS
+- $ nix build .#nixosConfigurations.[install-OS-name].config.system.build.isoImage
+  # nix repl >> :lf . >> [tab] searching
+- $ ls -lah
+  # result -> [real-path-of-install-OS]
+
+**  copy install OS to the usb
+- $ lsblk (confirm [device-name-of-usb] and 'mount state')
+- $ sudo fdisk /dev/[device-name-of-usb] >> m >> d (delete a partition) >> p (partition table) >> g (gpt) >> q (quit)
+- $ sudo dd if=[real-path-of-install-OS] of=/dev/[device-name-of-usb] bs=4M status=progress
+
+**  eject the usb
+- $ lsblk (confirm 'mount state')
+- $ umount [device-name-of-mounted-usb]
+- Eject the usb from computer
+
+* build nixos-configuration for target computer
+** build target OS image
+- $ nix build .#nixosConfigurations.[target-OS-name].config.system.build.toplevel
+- ls -lah
+  # result -> [real-path-of-install-OS]
+
+* target computer setting
+
+* nix copy
+
+* nixos-install
