@@ -196,11 +196,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
         "type": "github"
       },
       "original": {
@@ -250,11 +250,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1678185531,
-        "narHash": "sha256-S9UgBQJcbf7rfy4I5FxvAmGjHeYq82dc3SBTPktbrt8=",
+        "lastModified": 1679265143,
+        "narHash": "sha256-5RDMW+O4owjdPz7t4K4YxH2fOHCNOcyVmSiKRUikiv0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "defd16c5d5b271ff6cd7f72a108f711ebf31c936",
+        "rev": "1b8bf5c3270386a1b6850bd77d79dbdbaf0d7a7c",
         "type": "github"
       },
       "original": {
@@ -292,11 +292,11 @@
         "wallpapers": "wallpapers"
       },
       "locked": {
-        "lastModified": 1674922770,
-        "narHash": "sha256-YOaz0oqKFrL9ST3gX0vwhuLYc8EwPVBc8rzW4J1HVps=",
+        "lastModified": 1678779794,
+        "narHash": "sha256-8LxwjyBmU4qqUmgF1zmaHt9VF25kV47lCXrO/KDoG3w=",
         "owner": "syryuauros",
         "repo": "myxmonad",
-        "rev": "afba1b726d6a386b892b7768f46ddecb5170f890",
+        "rev": "fecef40b4cc3ce5671dc2a72d35e9853ce39321f",
         "type": "github"
       },
       "original": {
@@ -385,11 +385,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1678111249,
-        "narHash": "sha256-ZTIbK7vthZwti5XeLZE+twkb4l44q01q2XoLMmmJe94=",
+        "lastModified": 1679262748,
+        "narHash": "sha256-DQCrrAFrkxijC6haUzOC5ZoFqpcv/tg2WxnyW3np1Cc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a028e2873d7fcf44e66b784b4ba061824315537f",
+        "rev": "60c1d71f2ba4c80178ec84523c2ca0801522e0a6",
         "type": "github"
       },
       "original": {
@@ -618,16 +618,16 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1658397002,
-        "narHash": "sha256-rwcRPbhNykSqLpwAEJRe+02vvzgR2arxwLck7k+bvkE=",
-        "owner": "jjdosa",
-        "repo": "wallpapers",
-        "rev": "ed3c77c10fe1f0fa47b8e8b5cc0efeeaf6aa3759",
+        "lastModified": 1678779927,
+        "narHash": "sha256-0Igv0Kg2YmWTJamoDKeO7kO4WN4P0rUahPZ0vMNBR10=",
+        "owner": "syryuauros",
+        "repo": "mywallpapers",
+        "rev": "6ea7c7d2ecc6e96eb021793c76bd227cc117687b",
         "type": "github"
       },
       "original": {
-        "owner": "jjdosa",
-        "repo": "wallpapers",
+        "owner": "syryuauros",
+        "repo": "mywallpapers",
         "type": "github"
       }
     },
