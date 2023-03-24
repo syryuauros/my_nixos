@@ -67,6 +67,7 @@
           hds1-wireguard
           (import ./configuration.nix)
           (import ./nginx.nix)
+          (import ./cron.nix)
         ];
       };
       v15 = inputs.nixpkgs.lib.nixosSystem {
