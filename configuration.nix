@@ -40,8 +40,8 @@
       keep-outputs = true
       keep-derivations = true
     '';
-    trustedUsers = [ "root" "@admin" "@wheel" ];
-    # settings.trustedUsers = [ "root" "@admin" "@wheel" ];
+    settings.trusted-users = [ "root" "@admin" "@wheel" ];
+    # settings.settings.trusted-users = [ "root" "@admin" "@wheel" ];
     #binaryCaches = [
     settings.substituters = [
       "https://cache.nixos.org/"

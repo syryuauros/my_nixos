@@ -79,6 +79,8 @@
           # }
           (import ./configuration.nix)
           (import ./nginx.nix)
+          (import ./timer.nix)
+          #(import ./cron.nix)
           #(import ./xpra.nix)
         ];
       };
