@@ -1,7 +1,9 @@
 
 { config, lib, pkgs, ... }:
 let
-  auto-pull-cmd = "${pkgs.coreutils}/bin/cd /home/auros/gits/shapemaster && [ ! `${pkgs.git}/bin/git pull | grep file | wc -l` = 0 ]";
+  path-cmd = ''cd /home/auros/gits/shapemaster'';
+  auto-pull-cmd = ''[ `${pkgs.git}/bin/git pull | ${pkgs.gnugrep}/bin/grep file | ${pkgs.coreutils}/bin/wc -l` = 0 ]'';
+  #auto-pull-cmd = "cd /home/auros/gits/shapemaster && [ ! `${pkgs.git}/bin/git pull | grep file | wc -l` = 0 ]";
   write-cmd = ''echo "pull-success" >> /home/auros/test/cront.txt'';
   rebuild-cmd = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake /home/auros/gits/my_nixos#syryuhds --impure";
 in
@@ -9,7 +11,7 @@ in
   services.cron = {
     enable = true;
     systemCronJobs = [''
-      */1 * * * *      auros    ${auto-pull-cmd}
+      */1 * * * *      auros    ${pkgs.sudo}/bin/sudo ${rebuild-cmd}
     ''];
   };
 }
