@@ -20,9 +20,8 @@
 
     virtualHosts."__"= {
       listen = [ {addr = "0.0.0.0"; port = 50696; ssl = false; } ];
-      #root = "/home/auros/gits/shapemaster/daily";
       locations."/" = {
-        root = /home/auros/gits/shapemaster/daily;
+        root = "/var/www/shapemaster/daily";
         extraConfig =
           "autoindex on;"
           ;
