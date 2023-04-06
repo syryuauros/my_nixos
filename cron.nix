@@ -10,13 +10,20 @@ let
       git-as-user = "sudo -u ${user} ${git}";
       bastion-ip = "20.20.100.1";
       login-ip = "192.168.1.170";
+      ntest-dir = "/home/auros/test/ntest";
 
 
     in
       pkgs.writeScriptBin "ntest.sh" ''
-          date | tee -a /home/auros/test/ntest/result.txt
-          ssh solma@${bastion-ip} ping ${login-ip} -c 10 | grep -oP 'time=\K[\d\.]+' | awk '{sum+=$1; sumsq+=$1*$1} END {print "Average:", sum/NR, "ms"; print "Standard deviation:", sqrt((sumsq - sum*sum/NR)/NR), "ms"}' | tee -a /home/auros/test/ntest/result.txt
-        '';
+          date | tee -a ${ntest-dir}/result.txt
+          ssh solma@${bastion-ip} ping ${login-ip} -c 10 | grep -oP 'time=\K[\d\.]+' | awk '{sum+=$1; sumsq+=$1*$1} END {print "Average:", sum/NR, "ms"; print "Standard deviation:", sqrt((sumsq - sum*sum/NR)/NR), "ms"}' | tee -a ${ntest-dir}/result.txt
+          ssh solma@${bastion-ip} 'date | tee -a /home/solma/ntest/test.txt'
+          ssh solma@${bastion-ip} 'script -q -c "scp /home/solma/ntest/ntest.pdf solma@${login-ip}:/auros/home/solma/ntest/" | tee -a /home/solma/ntest/test.txt'
+      '';
+
+# $ cat result.txt | grep -oP 'Average: \K[\d\.]+'
+# $ cat test.txt | grep -oP 'KB   \K[\d\.]+'
+
 
       # pkgs.writeScriptBin "auto-pull.sh" ''
       #     cd "${auto-pull-working-dir}"
