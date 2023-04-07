@@ -24,6 +24,9 @@ let
 # $ cat result.txt | grep -oP 'Average: \K[\d\.]+'
 # $ cat test.txt | grep -oP 'KB   \K[\d\.]+'
 
+# $ cat result.txt | grep -oP '[\d\.]+:[\d\.]+:[\d\.]+ K' | tee latency-time.txt
+#
+
 
       # pkgs.writeScriptBin "auto-pull.sh" ''
       #     cd "${auto-pull-working-dir}"
