@@ -1,22 +1,64 @@
-
 { config, lib, pkgs, ... }:
 let
-  path-cmd = ''cd /home/auros/gits/shapemaster'';
-  auto-pull-cmd = ''[ `${pkgs.git}/bin/git pull | ${pkgs.gnugrep}/bin/grep file | ${pkgs.coreutils}/bin/wc -l` = 0 ]'';
-  #auto-pull-cmd = "cd /home/auros/gits/shapemaster && [ ! `${pkgs.git}/bin/git pull | grep file | wc -l` = 0 ]";
-  write-cmd = ''echo "pull-success" >> /home/auros/test/cront.txt'';
-  rebuild-cmd = "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake /home/auros/gits/my_nixos#syryuhds --impure";
+  auto-scripts =
+    let
+
+      target-branch = "main";
+      user = "nginx";
+      auto-pull-working-dir = "/var/www/shapemaster";
+      git = "${pkgs.git}/bin/git";
+      git-as-user = "sudo -u ${user} ${git}";
+      bastion-ip = "20.20.100.1";
+      login-ip = "192.168.1.170";
+      ntest-dir = "/home/auros/test/ntest";
+
+
+    in
+      pkgs.writeScriptBin "ntest.sh" ''
+          date | tee -a ${ntest-dir}/result.txt
+          ssh solma@${bastion-ip} ping ${login-ip} -c 10 | grep -oP 'time=\K[\d\.]+' | awk '{sum+=$1; sumsq+=$1*$1} END {print "Average:", sum/NR, "ms"; print "Standard deviation:", sqrt((sumsq - sum*sum/NR)/NR), "ms"}' | tee -a ${ntest-dir}/result.txt
+          ssh solma@${bastion-ip} 'date | tee -a /home/solma/ntest/test.txt'
+          ssh solma@${bastion-ip} 'script -q -c "scp /home/solma/ntest/ntest.pdf solma@${login-ip}:/auros/home/solma/ntest/" | tee -a /home/solma/ntest/test.txt'
+      '';
+
+# $ cat result.txt | grep -oP 'Average: \K[\d\.]+'
+# $ cat test.txt | grep -oP 'KB   \K[\d\.]+'
+
+
+      # pkgs.writeScriptBin "auto-pull.sh" ''
+      #     cd "${auto-pull-working-dir}"
+
+      #     COMMIT_ID_PREV="$(${git} rev-parse HEAD)"
+
+      #     ${git-as-user} checkout "${target-branch}"
+      #     ${git-as-user} pull
+
+      #     COMMIT_ID_NEXT="$(${git} rev-parse HEAD)"
+
+      #     if [ ! "$COMMIT_ID_PREV" = "$COMMIT_ID_NEXT" ]
+      #     then
+      #        echo "[$(${pkgs.coreutils}/bin/date +%s)]: /var/www/shapemaster updated: $COMMIT_ID_PREV -> $COMMIT_ID_NEXT"
+      #     else
+      #        echo "[$(${pkgs.coreutils}/bin/date +%s)]: /var/www/shapemaster is up to dated: $COMMIT_ID_PREV"
+      #     fi
+
+      #   '';
+
 in
 {
   services.cron = {
     enable = true;
     systemCronJobs = [''
-      */1 * * * *      auros    ${pkgs.sudo}/bin/sudo ${rebuild-cmd}
+      */1 * * * *      auros    ${auto-scripts}/bin/ntest.sh
     ''];
   };
 }
 
-      #*/1 * * * *      auros    cd /home/auros/gits/shapemaster && [ ! `git pull | grep file | wc -l` = 0 ] && echo "pull-success" >> /home/auros/test/cront.txt
-      #"*/1 * * * *      auros    cd /home/auros/gits/shapemaster && [ ! `git pull | grep file | wc -l` = 0 ] && sudo nixos-rebuild switch --flake /home/auros/gits/my_nixos#syryuhds --impure"
-
-      #*/1 * * * *      root    ${auto-pull-cmd} && ${rebuild-cmd}
+# {
+#   services.cron = {
+#     enable = true;
+#     systemCronJobs = [''
+#       */1 * * * *      root ${auto-scripts}/bin/auto-pull.sh 2>&1 >> /root/auto-pull.log
+#     ''];
+#   };
+# }

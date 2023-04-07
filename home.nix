@@ -33,7 +33,7 @@ in {
   mysystem.windowManager.xmonad.enable = true;
 
   home.packages = [
-  pkgs. ripgrep
+  pkgs.ripgrep
   pkgs.hyperfine
   mynerdfonts
   mytex
@@ -187,7 +187,8 @@ in {
     xterm="xterm +132 -fg grey70 -bg grey20 -fa 'Monospace' -fs 11";
     #xterm color name https://www.ditig.com/256-colors-cheat-sheet, $ xterm -help
     tmux="xterm +132 -fg grey70 -bg grey20 -fa 'Mnospace' -fs 11 -e tmux";
-    cd_pkgs="cd ${pkgs}";
+    pkgs="/nix/var/nix/profile/per-user/root/channels/nixos/pkgs";
+    lib="/nix/var/nix/profile/per-user/root/channels/nixos/lib";
   };
 
   home.sessionVariables = {

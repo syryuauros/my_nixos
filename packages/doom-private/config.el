@@ -261,7 +261,7 @@
           org-roam-ui-follow t
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t
-          org-roam-ui-port 35903
+          org-roam-ui-port 35901
           org-roam-ui-ws-server
           (websocket-server
            35903
