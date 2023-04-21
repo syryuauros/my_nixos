@@ -31,6 +31,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+
   nix = {
   # package = pkgs.nixUnstable;
     package = pkgs.nixFlakes;
@@ -157,6 +158,7 @@
      #gnuplot
       brave
       tmux
+     #tightvnc
     ];
 
     # nix options for derivations to persist garbage collection

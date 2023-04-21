@@ -79,6 +79,7 @@
           # }
           (import ./configuration.nix)
           (import ./nginx.nix)
+          (import ./tightvnc.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
           #(import ./xpra.nix)
