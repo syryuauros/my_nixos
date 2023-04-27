@@ -182,8 +182,15 @@
     services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
-
+    services.openssh = {
+      enable = true;
+      forwardX11 = true;
+      extraConfig = ''
+      X11DisplayOffset 10
+      X11UseLocalhost no
+      UseLogin no
+      '';
+    };
     security.sudo.wheelNeedsPassword = false;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
