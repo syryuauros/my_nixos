@@ -25,10 +25,13 @@ in {
   programs.bat.enable = true;
 
   fonts.fontconfig.enable = true;
+  nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" ];
 
   imports = [
     inputs.myxmonad.homeManagerModules.default
     inputs.nix-doom-emacs.hmModule
+    ./tightvncHome.nix
+    ./qemuHome.nix
   ];
   mysystem.windowManager.xmonad.enable = true;
 
@@ -67,6 +70,23 @@ in {
 #  ];
 
   services.flameshot.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "hproxy" = {
+        forwardX11 = true;
+        hostname = "192.168.12.180";
+        port = 2220;
+        user = "solma";
+      };
+      "gitea" = {
+        hostname = "20.20.1.1";
+        proxyJump = "hproxy";
+        user = "solma";
+      };
+    };
+  };
 
   programs.doom-emacs = {
     enable = true;

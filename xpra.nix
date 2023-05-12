@@ -24,6 +24,6 @@
     # Build Xpra with web browser client support
     services.xserver.displayManager.xpra = {
       enable = true;
-      extraOptions = [ startCommand displayOption ];
+#      extraOptions = [ startCommand displayOption ];
     };
   }

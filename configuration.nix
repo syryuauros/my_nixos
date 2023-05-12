@@ -147,6 +147,18 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwOvMlnEB1Qk2Aj/R7CcCSnzu3LlBrS6eh75IZzFEe4 auros"
     ];
   };
+    users.users.auroskks = {
+      isNormalUser = true;
+      uid = 1001;
+      home = "/home/auroskks";
+      extraGroups = [ "networkmanager" ];
+    # to generate : nix-shell -p mkpasswd --run 'mkpasswd -m sha-512'
+      hashedPassword = "$6$IJjCksKJ2BG1FYYe$MYwMQ5bR8Bd5F7bx79VAD4CxiI6Hy824C39LYcWHio5AygMC9/sSmxfOwov5KJpe4UN7ib.s2UtFVUIQD4m8C0";
+      openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwOvMlnEB1Qk2Aj/R7CcCSnzu3LlBrS6eh75IZzFEe4 auros"
+    ];
+  };
+
 
 
   # List packages installed in system profile. To search, run:
