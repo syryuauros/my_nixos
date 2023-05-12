@@ -36,6 +36,9 @@
       forAllSystems = genAttrs supportedSystems;
     in
     {
+    imports = [
+        ./test.nix
+      ];
     packages = forAllSystems (import ./packages inputs);
     # packages = import ./packages { inherit inputs system; };
 
@@ -80,6 +83,7 @@
           (import ./configuration.nix)
           (import ./nginx.nix)
           (import ./tightvnc.nix)
+          (import ./qemu.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
           # (import ./xpra.nix)
