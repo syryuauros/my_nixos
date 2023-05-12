@@ -1,9 +1,9 @@
 {
   home = {
     shellAliases = {
-      windows10_instatll="qemu-img create windows.raw 200G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom /home/auros/Downloads/Win10_22H2_Korean_x64.iso -drive file=windows.raw,format=raw -enable-kvm";
-      windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=windows.raw,format=raw -enable-kvm";
-      windows10_full="sudo qemu-system-x86_64 -m 25G -cpu host -smp sockets=1,cores=6,threads=6 -drive file=windows.raw,format=raw -enable-kvm";
+      windows10_instatll="qemu-img create /home/auros/windows.raw 200G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom /home/auros/Downloads/Win10_22H2_Korean_x64.iso -drive file=windows.raw,format=raw -enable-kvm";
+      windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=/home/auros/windows.raw,format=raw -enable-kvm";
+      windows10_full="sudo qemu-system-x86_64 -m 25G -cpu host -smp sockets=1,cores=6,threads=6 -drive file=/home/auros/windows.raw,format=raw -enable-kvm";
     };
   };
 }
