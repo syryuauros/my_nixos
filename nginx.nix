@@ -34,6 +34,10 @@
       locations."/" = {
         # root = /home/auros/gits/programming/Haskell/projects/miso/result/bin/app.jsexe;
         root = "/var/www/miso";
+        # root = PATH, if we give PATH as string then it follows the path literaly, but if we just give it without "", then it makes snapshot folder in /nix/store/ that is confirmed by nix.conf file that is searched by ls /nix/store | grep nginx.conf
+        # $ rsync -av --delete /home/auros/gits/shapemaster/daily/ /var/www/SM_daily/
+        #    --delete option means 'enable deletion of extraneous files, you need to include the --delete option'
+        # $ chown -R nginx:nginx [PATH_to_folder]     first nginx userID(/etc/passwd) 2nd nginx groupID(/etc/group)
         extraConfig =
           "autoindex on;"
           ;
