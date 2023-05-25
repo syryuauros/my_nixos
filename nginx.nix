@@ -59,6 +59,11 @@
 #https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%86%8C%EC%BC%93-Socket-%EC%97%AD%EC%82%AC%EB%B6%80%ED%84%B0-%EC%A0%95%EB%A6%AC
 #
 
-# | change authority       | :: | $ sudo chown nginx /var/www/miso |
+# | change authority       | :: | $ sudo chown -R nginx:nginx /var/www/miso |
 # | confirm authority list | :: | $ bat /etc/passwd                |
 # |ls /nix/store [pl] grep nginx.conf [pl] xargs -I {} stat /nix/store/{} [pl] grep -E 'File[pl]Birth'|
+#
+    # $ cd /nix/var/nix/profiles/
+    # remove unnecessary system-[number]-link/ folder
+    # be careful not to delete system/ folder!!!
+    # $ nix-store --gc | nix-collect-garbage -d
