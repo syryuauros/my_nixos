@@ -20,13 +20,25 @@
       listen = [ {addr = "0.0.0.0"; port = 50696; ssl = false; } ];
       #root = "/home/auros/gits/shapemaster/daily";
       locations."/" = {
-        root = /home/auros/gits/shapemaster/daily;
+        root = "/var/www/SM_daily";
+        #root = /home/auros/gits/shapemaster/daily;
         extraConfig =
           "autoindex on;"
           ;
         };
       };
 
+    virtualHosts."___"= {
+      listen = [ {addr = "0.0.0.0"; port = 50697; ssl = false; } ];
+      #root = "/home/auros/gits/shapemaster/daily";
+      locations."/" = {
+        # root = /home/auros/gits/programming/Haskell/projects/miso/result/bin/app.jsexe;
+        root = "/var/www/miso";
+        extraConfig =
+          "autoindex on;"
+          ;
+        };
+      };
     };
   }
 
@@ -42,3 +54,7 @@
 #https://tecoble.techcourse.co.kr/post/2021-08-14-web-socket/
 #https://inpa.tistory.com/entry/WEB-%F0%9F%8C%90-%EC%9B%B9-%EC%86%8C%EC%BC%93-Socket-%EC%97%AD%EC%82%AC%EB%B6%80%ED%84%B0-%EC%A0%95%EB%A6%AC
 #
+
+# | change authority       | :: | $ sudo chown nginx /var/www/miso |
+# | confirm authority list | :: | $ bat /etc/passwd                |
+# |ls /nix/store [pl] grep nginx.conf [pl] xargs -I {} stat /nix/store/{} [pl] grep -E 'File[pl]Birth'|
