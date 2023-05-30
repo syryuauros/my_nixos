@@ -32,6 +32,7 @@ in {
     inputs.nix-doom-emacs.hmModule
     ./tightvncHome.nix
     ./qemuHome.nix
+    ./nginxHome.nix
   ];
   mysystem.windowManager.xmonad.enable = true;
 
