@@ -66,8 +66,10 @@
           ({ inherit nixpkgs;})
           hds1-wireguard
           (import ./configuration.nix)
-          (import ./nginx.nix)
+          #(import ./nginx.nix)
           (import ./cron.nix)
+          (import ./qemu.nix)
+          (import ./tightvnc.nix)
         ];
       };
       v15 = inputs.nixpkgs.lib.nixosSystem {

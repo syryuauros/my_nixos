@@ -36,6 +36,8 @@ in {
   imports = [
     inputs.myxmonad.homeManagerModules.default
     inputs.nix-doom-emacs.hmModule
+    ./tightvncHome.nix
+    ./qemuHome.nix
   ];
   mysystem.windowManager.xmonad.enable = true;
 
