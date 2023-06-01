@@ -3,7 +3,6 @@ let
   path_windows_R_raw = "/home/auros/windows_R.raw";
   path_windows_iso = "/home/auros/Downloads/Win10_22H2_Korean_x64.iso";
   mac_alloc = "52:54:00:12:34:56";
-  mac_R_alloc = "68:05:CA:FA:75:9E";
   ip_alloc = "192.168.0.0/24";
 in
 {
@@ -13,7 +12,6 @@ in
       windows10_install="qemu-img create ${path_windows_raw} 70G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom ${path_windows_iso} -drive file=${path_windows_raw},format=raw -enable-kvm -nic mac=${mac_alloc} -rtc base=2023-05-29T09:30:11";
       windows10_wo_network="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -nic none";
       windows10_mac_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
-      windows10_R_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_R_raw},format=raw -enable-kvm -device e1000,mac=${mac_R_alloc}";
       windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm";
       #windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -netdev user,id=net0,net=${ip_alloc} -device e1000,netdev=net0";
       windows10_full="sudo qemu-system-x86_64 -m 25G -cpu host -smp sockets=1,cores=6,threads=6 -drive file=${path_windows_raw},format=raw -enable-kvm";
