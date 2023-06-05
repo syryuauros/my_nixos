@@ -150,7 +150,7 @@ in {
       { id = "gfbliohnnapiefjpjlpjnehglfpaknnc"; } # surfingkeys
       { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
-  #    { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # onetab
+      { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # onetab
       { id = "lhkgpdljnlplgbkonflbhifackjhjmdj"; } # prompt genie
     ];
   };
