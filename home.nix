@@ -210,6 +210,9 @@ in {
     tmux="xterm +132 -fg grey70 -bg grey20 -fa 'Mnospace' -fs 11 -e tmux";
     pkgs="/nix/var/nix/profile/per-user/root/channels/nixos/pkgs";
     lib="/nix/var/nix/profile/per-user/root/channels/nixos/lib";
+    #xset s off -dpms
+    #xset s on
+    #xset s 600
   };
 
   home.sessionVariables = {
