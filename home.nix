@@ -17,8 +17,8 @@
   #   mynerdfonts
   # ;
 in {
-  home.username = "syryu@auros";
-  home.homeDirectory = "/home/auros";
+  home.username = "auros";
+  home.homeDirectory = "/home/auros/";
 
   programs.home-manager.enable = true;
   programs.jq.enable = true;

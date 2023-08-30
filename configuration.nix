@@ -140,7 +140,7 @@
     users.users.auros = {
       isNormalUser = true;
       uid = 1000;
-      home = "/home/auros";
+      home = "/home/auros/";
       extraGroups = [ "wheel" "networkmanager" ];
     # to generate : nix-shell -p mkpasswd --run 'mkpasswd -m sha-512'
       hashedPassword = "$6$4eILJE5YFY$RDB8ra1mdoFaPscoDnEgoQBI83StsUEVhwUp2mAWK0b082ocZ44hdLBlRTPt.6IayLqr/6wuwRCTpxAacfE56.";
@@ -197,7 +197,8 @@
   # Enable the OpenSSH daemon.
     services.openssh = {
       enable = true;
-      forwardX11 = true;
+      # forwardX11 = true;
+      settings.X11Forwarding = true;
       extraConfig = ''
       X11DisplayOffset 10
       X11UseLocalhost no

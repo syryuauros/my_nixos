@@ -9,13 +9,13 @@ in
   home = {
     shellAliases = {
 
-      windows10_install="qemu-img create ${path_windows_raw} 70G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom ${path_windows_iso} -drive file=${path_windows_raw},format=raw -enable-kvm -nic mac=${mac_alloc} -rtc base=2023-05-29T09:30:11";
-      windows10_wo_network="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -nic none";
-      windows10_mac_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
-      windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm";
-      windows10_R_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_R_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
+      #windows10_install="qemu-img create ${path_windows_raw} 70G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom ${path_windows_iso} -drive file=${path_windows_raw},format=raw -enable-kvm -nic mac=${mac_alloc} -rtc base=2023-05-29T09:30:11";
+      #windows10_wo_network="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -nic none";
+      #windows10_mac_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
+      #windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm";
+      #windows10_R_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_R_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
       #windows10="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -netdev user,id=net0,net=${ip_alloc} -device e1000,netdev=net0";
-      windows10_full="sudo qemu-system-x86_64 -m 25G -cpu host -smp sockets=1,cores=6,threads=6 -drive file=${path_windows_raw},format=raw -enable-kvm";
+      #windows10_full="sudo qemu-system-x86_64 -m 25G -cpu host -smp sockets=1,cores=6,threads=6 -drive file=${path_windows_raw},format=raw -enable-kvm";
     };
   };
 }
