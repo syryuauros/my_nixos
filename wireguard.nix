@@ -1,30 +1,34 @@
 { config, lib, pkgs, ... }: {
 
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+  ];
+
   networking ={
     nat.enable = true;
-    nat.externalInterface = "eth0";
-    nat.internalInterface = [ "sra0" ];
+    nat.externalInterface = "enp1s0";
+    nat.internalInterfaces = [ "sra0" ];
     firewall = {
+      allowedTCPPorts = [ 53 ];
       allowedUDPPorts = [ 51820 ];
     };
   };
   networking.wireguard.interfaces = {
     sra0 = {
       ips = [ "10.100.0.1/24"];
-      listenPosrt = 51820;
+      listenPort = 51820;
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp1s0 -j MASQUERADE
       '';
       postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp1s0 -j MASQUERADE
       '';
-      privateKeyFile = "~/wireguard-keys/private/";
-
+      privateKeyFile = "home/auros/wireguard-keys/private";
       peers = [
-        {
-          publicKey = "kNteCelNfQlGjhhWcP/OtE9Rc12bdPMgpDsmzx7kpn8=";
-          allowedIPs = [ "10.100.0.3/32" ];
-        }
+        # {
+        #   publicKey = "kNteCelNfQlGjhhWcP/OtE9Rc12bdPMgpDsmzx7kpn8=";
+        #   allowedIPs = [ "10.100.0.3/32" ];
+        # }
 
         {
           publicKey = "Uzld/a3SscjfNlLKIre+wuesxt1dyk3pJN6SqZJZ1XI=";
