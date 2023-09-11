@@ -84,6 +84,7 @@
           (import ./nginx.nix)
           (import ./tightvnc.nix)
           (import ./qemu.nix)
+          (import ./wireguard.nix)
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
