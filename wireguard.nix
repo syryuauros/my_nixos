@@ -25,13 +25,8 @@
       '';
       privateKeyFile = "home/auros/wireguard-keys/private";
       peers = [
-        # {
-        #   publicKey = "kNteCelNfQlGjhhWcP/OtE9Rc12bdPMgpDsmzx7kpn8=";
-        #   allowedIPs = [ "10.100.0.3/32" ];
-        # }
-
         {
-          publicKey = "Uzld/a3SscjfNlLKIre+wuesxt1dyk3pJN6SqZJZ1XI=";
+          publicKey = "bvUdF50XkuXJqp/7emWL9nEqYC9yz7/Hy3M8ExDahlc=";
           allowedIPs = [ "10.100.0.2/32" ];
         }
       ];
