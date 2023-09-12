@@ -27,6 +27,7 @@
       peers = [
         {
           publicKey = "bvUdF50XkuXJqp/7emWL9nEqYC9yz7/Hy3M8ExDahlc=";
+          #publicKey = "+lOSrYNo9HXC8IesJa1kzka2Po8Djky+dtQEy6Kj/Rk=";
           allowedIPs = [ "10.100.0.2/32" ];
         }
       ];
