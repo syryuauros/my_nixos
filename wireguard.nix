@@ -15,20 +15,21 @@
   };
   networking.wireguard.interfaces = {
     sra0 = {
-      ips = [ "10.100.0.1/24"];
+      ips = [ "20.20.100.1/24"];
       listenPort = 51820;
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp1s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 20.20.100.0/16 -o enp1s0 -j MASQUERADE
       '';
       postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp1s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 20.20.100.0/16 -o enp1s0 -j MASQUERADE
       '';
-      privateKeyFile = "home/auros/wireguard-keys/private";
+      privateKeyFile = "/home/auros/wireguard-keys/private";
       peers = [
         {
           publicKey = "bvUdF50XkuXJqp/7emWL9nEqYC9yz7/Hy3M8ExDahlc=";
           #publicKey = "+lOSrYNo9HXC8IesJa1kzka2Po8Djky+dtQEy6Kj/Rk=";
-          allowedIPs = [ "10.100.0.2/32" ];
+          #endpoint = "192.168.12.171:51820";
+          allowedIPs = [ "20.20.100.2/32" ];
         }
       ];
     };
@@ -36,5 +37,7 @@
 
   }
 
+#important :: you have to check peers publicKey by 'sudo wg show' in peers machine
+#
 #https://nixos.wiki/wiki/WireGuard
 #https://github.com/jjdosa/mysystem/blob/a8d661be2c7c9a739211f772de574a8e5138dd6d/nixosConfigurations/features/wireguard.nix
