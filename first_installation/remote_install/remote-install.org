@@ -9,7 +9,7 @@
 
 **  copy install OS to the usb
 - $ lsblk (confirm [device-name-of-usb] and 'mount state')
-- $ sudo fdisk /dev/[device-name-of-usb] >> m >> d (delete a partition) >> p (partition table) >> g (gpt) >> q (quit)
+- $ sudo fdisk /dev/[device-name-of-usb] >> m >> d (delete a partition) >> p (partition table) >> g (gpt) >> w (save & quit)
 - $ sudo dd if=[real-path-of-install-OS] of=/dev/[device-name-of-usb] bs=4M status=progress
 
 **  eject the usb
