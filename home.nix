@@ -200,7 +200,7 @@ in {
     lla  = "ls -al";
     ec   = "emacsclient";
     ecc  = "emacsclient -c";
-    ping = "prettyping";
+    #ping = "prettyping";
     ".." = "cd ..";
     p = "pushd";
     d = "dirs -v";
@@ -208,8 +208,9 @@ in {
     xterm="xterm +132 -fg grey70 -bg grey20 -fa 'Monospace' -fs 11";
     #xterm color name https://www.ditig.com/256-colors-cheat-sheet, $ xterm -help
     tmux="xterm +132 -fg grey70 -bg grey20 -fa 'Mnospace' -fs 11 -e tmux";
-    pkgs="/nix/var/nix/profile/per-user/root/channels/nixos/pkgs";
-    lib="/nix/var/nix/profile/per-user/root/channels/nixos/lib";
+    pkgs="/nix/var/nix/profiles/per-user/root/channels/nixos/pkgs";
+    lib="/nix/var/nix/profiles/per-user/root/channels/nixos/lib";
+    picom_80="picom -cf -i 0.8 --use-ewmh-active-win &";
     #xset s off -dpms
     #xset s on
     #xset s 600

@@ -43,8 +43,28 @@
           ;
         };
       };
+
+    virtualHosts."____"= {
+      listen = [ {addr = "0.0.0.0"; port = 50698; ssl = false; } ];
+      #root = "/home/auros/gits/shapemaster/daily";
+      locations."/" = {
+        # root = /home/auros/gits/programming/Haskell/projects/miso/result/bin/app.jsexe;
+        root = "/var/www/webTest";
+        # root = PATH, if we give PATH as string then it follows the path literaly, but if we just give it without "", then it makes snapshot folder in /nix/store/ that is confirmed by nix.conf file that is searched by ls /nix/store | grep nginx.conf
+        # $ rsync -av --delete /home/auros/gits/shapemaster/daily/ /var/www/SM_daily/
+        #    --delete option means 'enable deletion of extraneous files, you need to include the --delete option'
+        # $ chown -R nginx:nginx [PATH_to_folder]     first nginx userID(/etc/passwd) 2nd nginx groupID(/etc/group)
+        extraConfig =
+          "autoindex on;"
+          ;
+        };
+      };
+
     };
   }
+
+
+# chown -R auros:users /var/www/webTest/
 
 # http://brownbears.tistory.com/191 -- reverse proxy server concepts
 # https://soojong.tistory.com/entry/Nginx%EB%A1%9C-%EC%A0%95%EC%A0%81-%EC%BB%A8%ED%85%90%EC%B8%A0-%EC%A0%9C%EA%B3%B5%ED%95%98%EA%B8%B0
