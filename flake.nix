@@ -103,6 +103,7 @@
   };
 
 }
+# wallPapers update: wallPaper git push -> my_xmonad nix flake update-> my_xmonad git push -> my_nixos nix flake update -> home-manager switch
 # home-manager set up & use nixos version 22.11
 # emacs setup
 #     org-roam-ui :: https://www.youtube.com/watch?v=HXa5fZjbioA
