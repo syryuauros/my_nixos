@@ -24,7 +24,8 @@
     # mynerdfonts
   ;
 in {
-  home.username = "syryu@auros";
+  home.username = "auros";
+  # home.username = "syryu@auros";
   home.homeDirectory = "/home/auros";
 
   programs.home-manager.enable = true;
@@ -196,6 +197,7 @@ in {
     xterm="xterm +132 -fg grey70 -bg grey20 -fa 'Monospace' -fs 11";
     #xterm color name https://www.ditig.com/256-colors-cheat-sheet, $ xterm -help
     tmux="xterm +132 -fg grey70 -bg grey20 -fa 'Mnospace' -fs 11 -e tmux";
+    battery_check="upower -i $(upower -e | grep 'BAT') | grep percentage";
   };
 
   home.sessionVariables = {
