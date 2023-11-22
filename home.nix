@@ -151,7 +151,11 @@ in {
       { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
       { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # onetab
-      { id = "lhkgpdljnlplgbkonflbhifackjhjmdj"; } # prompt genie
+      { id = "lpfemeioodjbpieminkklglpmhlngfcn"; } # WebChatGPT
+      { id = "cipccbpjpemcnijhjcdjmkjhmhniiick"; } # SciSpace
+      { id = "cbgecfllfhmmnknmamkejadjmnmpfjmp"; } # ChatGPT>>Summarize & Chat
+      { id = "nmmicjeknamkfloonkhhcjmomieiodli"; } # YouTube Summary with ChatGPT & Claude
+      { id = "hlgbcneanomplepojfcnclggenpcoldo"; } # Perplexity - AI Companion
     ];
   };
   # extensions ID check (below, answer from chatgpt)
