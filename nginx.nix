@@ -55,6 +55,20 @@
         };
       };
 
+    virtualHosts."_01"= {
+      listen = [ {addr = "0.0.0.0"; port = 7979; ssl = false; } ];
+      #root = "/home/auros/gits/shapemaster/daily";
+      locations."/" = {
+        root = "/var/www/webUI01";
+        #root = /home/auros/gits/shapemaster/daily;
+        extraConfig =
+          "autoindex on;"
+          ;
+        };
+      };
+
+
+
     };
   }
 
