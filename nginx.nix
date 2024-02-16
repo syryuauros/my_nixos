@@ -67,6 +67,18 @@
         };
       };
 
+    virtualHosts."_02"= {
+      listen = [ {addr = "0.0.0.0"; port = 7978; ssl = false; } ];
+      #root = "/home/auros/gits/shapemaster/daily";
+      locations."/" = {
+        root = "/var/www/ML_hybrid_DPrec";
+        #root = /home/auros/gits/shapemaster/daily;
+        extraConfig =
+          "autoindex on;"
+          ;
+        };
+      };
+
 
 
     };
