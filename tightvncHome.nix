@@ -2,6 +2,7 @@
   home = {
     shellAliases = {
       vnc_as="vncviewer -geometry auto 192.168.13.40";
+      vnc_SMGUI="vncviewer -geometry auto 192.168.12.180"; #s**m*
     };
   };
 }

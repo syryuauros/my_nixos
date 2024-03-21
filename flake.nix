@@ -85,6 +85,7 @@
           (import ./tightvnc.nix)
           (import ./qemu.nix)
           (import ./wireguard.nix)
+          (import ./mariaDB.nix)
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
