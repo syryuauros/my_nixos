@@ -20,6 +20,8 @@ in
   };
 }
 
+# mouse cursor release: ctrl + alt +g
+# quit: ctrl + alt + q
 # https://github.com/syryuauros/Memo/blob/main/RoamNotes/20230302093553-qemu.org
 # https://truesale.tistory.com/entry/%EC%9C%88%EB%8F%84%EC%9A%B0-10-%ED%8C%81-%EB%AC%B4%EB%A3%8C%EB%A1%9C-%EC%A0%95%ED%92%88-%EC%9D%B8%EC%A6%9D%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
 # storage(hard-disk) making: $ qemu-img create windows.raw 200G install windows10 : $ sudo qemu-system-x86_64 -m 4G -cpu host -smp sockets=1,cores=2,threads=2 -cdrom /home/auros/Downloads/Win10_22H2_Korean_x64.iso -drive file=windows.raw,format=raw -enable-kvm run VM win10 installed : $ sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=windows.raw,format=raw -enable-kvm

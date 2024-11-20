@@ -56,7 +56,7 @@
       };
 
     virtualHosts."_01"= {
-      listen = [ {addr = "0.0.0.0"; port = 7979; ssl = false; } ];
+      listen = [ {addr = "0.0.0.0"; port = 7979; ssl = false; } ]; #/home/auros/gits/programming/python3_10/projects/webUI/test4/test_server.py
       #root = "/home/auros/gits/shapemaster/daily";
       locations."/" = {
         root = "/var/www/webUI01";

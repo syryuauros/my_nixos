@@ -7,7 +7,7 @@
        rsync -avu --delete /home/auros/gits/programming/python3_10/projects/webUI/test1/html/ /var/www/webUI01/ |
        rsync -avu --delete /home/auros/gits/ANS/webTest/ /var/www/webTest/
        rsync -avu --delete /home/auros/gits/programming/python3_10/projects/webUI/test4/html/ /var/www/webUI01/
-       rsync -avu --delete /home/auros/gits/programming/python3_10/projects/ML/hybrid/thicknessDynamicPrecision/html2/ /var/www/ML_hybrid_DPrec/
+       rsync -avu --delete /home/auros/gits/programming/python3_10/projects/ML/hybrid/thicknessDynamicPrecision/htmlDPDB/ /var/www/ML_hybrid_DPrec/
       '';
       nginx_authority_setup="sudo chown -R auros:users /var/www";
     };
