@@ -81,11 +81,13 @@
           #   # arguments to home.nix
           # }
           (import ./configuration.nix)
+          (import ./allowInsecure.nix)
           (import ./nginx.nix)
           (import ./tightvnc.nix)
           (import ./qemu.nix)
           (import ./wireguard.nix)
           (import ./mariaDB.nix)
+          (import ./obsidian.nix)
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)

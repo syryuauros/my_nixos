@@ -1,11 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  # nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" ];
-  environment.systemPackages = with pkgs; [
-    tightvnc
-  ];
-  #
+  nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" ];
 }
 
 
