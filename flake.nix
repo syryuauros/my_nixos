@@ -108,6 +108,16 @@
 
 }
 # wallPapers update: wallPaper git push -> my_xmonad nix flake update-> my_xmonad git push -> my_nixos nix flake update -> home-manager switch
+#
+# xmonad add 'flameshot gui'hotkey update:
+#  myxmonad/modules/home-manager/myxmonad.nix -> add flameshot to home.packages
+#  xmonad.hs -> modify key bindings for 'flameshot gui' to 'M-C-S-s'
+#  git push to remote (myxmonad)
+#  terminal: myxmonad> nix flake update
+#  terminal: my_nixos> nix flake update
+#  terminal: my_nixos> sudo nixos-rebuild switch --flake .#syryuhds --impure
+#  terminal: my_nixos> home-manager switch --flake .#auros --impure
+#
 # home-manager set up & use nixos version 22.11
 # emacs setup
 #     org-roam-ui :: https://www.youtube.com/watch?v=HXa5fZjbioA
