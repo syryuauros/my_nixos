@@ -86,6 +86,11 @@ in {
         proxyJump = "hproxy";
         user = "solma";
       };
+      "githubObsidian" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519_obsidian_git";
+      };
     };
   };
 

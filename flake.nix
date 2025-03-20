@@ -88,6 +88,7 @@
           (import ./wireguard.nix)
           (import ./mariaDB.nix)
           (import ./obsidian.nix)
+          (import ./rclone.nix)
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
