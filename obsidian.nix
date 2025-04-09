@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     obsidian
+    openbox # light weight window manager for xpra remote
   ];
   #
 }
