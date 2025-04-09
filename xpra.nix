@@ -28,8 +28,9 @@
     };
 
     # light weight window manager for move execution window when execute program via xpra
-    environment.systemPackages = with pkgs; [
-      openbox
-    ];
+    services.xserver.windowManager.openbox = {
+      enable = true;
+#      extraOptions = [ startCommand displayOption ];
+    };
 
   }
