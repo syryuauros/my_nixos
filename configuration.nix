@@ -169,6 +169,7 @@
       wget
       git
       ripgrep
+      openbox
      #gnuplot
       brave
       tmux
