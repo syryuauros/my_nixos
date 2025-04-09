@@ -26,4 +26,10 @@
       enable = true;
 #      extraOptions = [ startCommand displayOption ];
     };
+
+    # light weight window manager for move execution window when execute program via xpra
+    environment.systemPackages = with pkgs; [
+      obsidian
+    ];
+
   }
