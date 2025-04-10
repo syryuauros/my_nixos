@@ -92,7 +92,7 @@
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
-          # (import ./xpra.nix)
+          (import ./xpra.nix)
         ];
       };
     };

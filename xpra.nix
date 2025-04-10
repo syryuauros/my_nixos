@@ -20,17 +20,21 @@
       };
 
   in {
+    environment.systemPackages = with pkgs; [
+      xpra
+    ];
 
-    # Build Xpra with web browser client support
-    services.xserver.displayManager.xpra = {
-      enable = true;
-#      extraOptions = [ startCommand displayOption ];
-    };
 
-    # light weight window manager for move execution window when execute program via xpra
-    services.xserver.windowManager.openbox = {
-      enable = true;
-#      extraOptions = [ startCommand displayOption ];
+#     # Build Xpra with web browser client support
+#     services.xserver.displayManager.xpra = {
+#       enable = true;
+# #      extraOptions = [ startCommand displayOption ];
+#     };
+
+#     # light weight window manager for move execution window when execute program via xpra
+#     services.xserver.windowManager.openbox = {
+#       enable = true;
+# #      extraOptions = [ startCommand displayOption ];
     };
 
   }
