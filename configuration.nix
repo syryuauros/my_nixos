@@ -34,7 +34,7 @@
 
   nix = {
   # package = pkgs.nixUnstable;
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
   #   experimental-features = nix-command flakes ca-references
@@ -102,7 +102,7 @@
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     inter
   ];
 
@@ -124,8 +124,8 @@
   # services.printing.enable = true;
 
   # Enable sound.
-    sound.enable = true;
-    hardware.pulseaudio.enable = true;
+    # sound.enable = true;
+    hardware.pulseaudio.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

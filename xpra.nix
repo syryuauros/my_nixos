@@ -35,6 +35,6 @@
 #     services.xserver.windowManager.openbox = {
 #       enable = true;
 # #      extraOptions = [ startCommand displayOption ];
-    };
+    # };
 
   }
