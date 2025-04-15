@@ -1,17 +1,18 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils/main";
     myxmonad.url = "github:syryuauros/myxmonad";
-    doom-private.url = "github:jjdosa/doom-private";
+    doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
     nix-doom-emacs = {
-      url = "github:jjdosa/nix-doom-emacs";
+      url = "github:syryuauros/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     #nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
@@ -27,18 +28,33 @@
           "tightvnc-1.3.10"
           "electron-24.8.6"
         ];
+
         config.allowUnfree =true;
         # config.allowInsecure = true;
       };
+
+      pkgsUnstable = import inputs.nixpkgsUnstable {
+        inherit system;
+        config.permittedInsecurePackages = [
+        ];
+
+        config.allowUnfree =true;
+      };
+
       nixpkgs = {
         inherit system;
         config.allowUnfree = true;
+        config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" ];
         overlays = [
           # inputs.nix-doom-emacs.overlays.default
           # inputs.nix-doom-emacs.overlay
-              (final: prve: {
+              (final: prev: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
                 tightvnc = pkgs2305.tightvnc;
+                xpra = prev.xpra.override {
+                  # enableHtml5 = true;
+                };
+                xpraHtml5 = pkgsUnstable.xpra-html5;
               })
         ];  };
       pkgs = import inputs.nixpkgs nixpkgs;

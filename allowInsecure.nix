@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" ];
+  # nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" ];
+  # integrate into flake.nix for preserving confusion
 }
 
 

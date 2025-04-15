@@ -146,6 +146,7 @@
       hashedPassword = "$6$4eILJE5YFY$RDB8ra1mdoFaPscoDnEgoQBI83StsUEVhwUp2mAWK0b082ocZ44hdLBlRTPt.6IayLqr/6wuwRCTpxAacfE56.";
       openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwOvMlnEB1Qk2Aj/R7CcCSnzu3LlBrS6eh75IZzFEe4 auros"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILsg3JqQm0WwFW2CRNzJOwjyy8DPN+2zKGLvd4tWpUP"
     ];
   };
   #   users.users.auroskks = {
