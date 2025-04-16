@@ -9,13 +9,14 @@
     });
 
   mynerdfonts = pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; };
-  # mypackages = inputs.self.packages.${pkgs.system};
+  mypackages = inputs.self.packages.${pkgs.system};
 
-  # inherit (mypackages)
-  #   noto-sans-kr
-  #   seoul-hangan
-  #   mynerdfonts
-  # ;
+  inherit (mypackages)
+    noto-sans-kr
+    noto-serif-kr
+    seoul-hangan
+    # mynerdfonts
+  ;
 in {
   home.username = "auros";
   home.homeDirectory = "/home/auros/";
@@ -44,18 +45,18 @@ in {
   pkgs.kolourpaint
   inputs.myxmonad.packages.${pkgs.system}.xmonad-restart
   #fonts
-  # noto-sans-kr
-  # # noto-serif-kr
+  noto-sans-kr
+  noto-serif-kr
   # # nerdfonts
   # pkgs.symbola
-  # seoul-hangan
+  seoul-hangan
   # mynerdfonts
-  # pkgs.noto-fonts-cjk
-  # # noto-fonts
-  # pkgs.material-design-icons
-  # pkgs.weather-icons
-  # pkgs.font-awesome
-  # pkgs.emacs-all-the-icons-fonts
+  pkgs.noto-fonts-cjk
+  # noto-fonts
+  pkgs.material-design-icons
+  pkgs.weather-icons
+  pkgs.font-awesome
+  pkgs.emacs-all-the-icons-fonts
 ];
   # home.packages = with pkgs;[
   #   ripgrep
