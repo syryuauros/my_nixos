@@ -92,9 +92,9 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
-      type = "kime";
-      enable = true;
-      # enabled = "kime";
+      # type = "kime";
+      # enable = true;
+      enabled = "kime";
       kime = {};
   };
 };
@@ -102,11 +102,17 @@
   #noto-fonts added
   #fonts.enableFontDir = true;
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
+  fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     inter
   ];
+
+  # fonts.packages = with pkgs; [
+  #   noto-fonts
+  #   noto-fonts-cjk-sans
+  #   inter
+  # ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -172,6 +178,7 @@
       wget
       git
       ripgrep
+      kime
      #gnuplot
       brave
       tmux

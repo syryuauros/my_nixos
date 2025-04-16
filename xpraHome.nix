@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgsUnstable, ... }:
 let
 
 in
 {
   home = {
     shellAliases = {
-      xpraHtml5Start="xpra start :100 --start=xterm --bind-tcp=0.0.0.0:10000 --html=${pkgs.xpraHtml5}/share/xpra/www/ --daemon=no --debug=all --log-file=/tmp/xpra.log";
+      xpraHtml5Start="xpra start :100 --start=xterm --bind-tcp=0.0.0.0:10000 --html=${pkgsUnstable.xpraHtml5}/share/xpra/www/ --daemon=no --debug=all --log-file=/tmp/xpra.log";
       #windows10_install="qemu-img create ${path_windows_raw} 70G | sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -cdrom ${path_windows_iso} -drive file=${path_windows_raw},format=raw -enable-kvm -nic mac=${mac_alloc} -rtc base=2023-05-29T09:30:11";
       #windows10_wo_network="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -nic none";
       #windows10_mac_fixed="sudo qemu-system-x86_64 -m 16G -cpu host -smp sockets=1,cores=4,threads=4 -drive file=${path_windows_raw},format=raw -enable-kvm -device e1000,mac=${mac_alloc}";
