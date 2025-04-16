@@ -1,13 +1,15 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05";
+
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils/main";
+
     myxmonad.url = "github:syryuauros/myxmonad";
     doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
@@ -15,8 +17,6 @@
       url = "github:syryuauros/nix-doom-emacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nix-doom-emacs.url = "github:syryuauros/nix-doom-emacs";
-    #nix-doom-emacs.inputs.doom-private.follows = "doom-private";
   };
 
   outputs = inputs:
@@ -120,7 +120,7 @@
           # (import ./dhcpd4.nix)
           #(import ./timer.nix)
           #(import ./cron.nix)
-          (import ./xpra.nix)
+          # (import ./xpra.nix)
         ];
       };
     };
