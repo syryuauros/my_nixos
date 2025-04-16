@@ -34,7 +34,7 @@ in {
     ./tightvncHome.nix
     ./qemuHome.nix
     ./nginxHome.nix
-    ./xpraHome.nix
+    # ./xpraHome.nix
   ];
   mysystem.windowManager.xmonad.enable = true;
 
