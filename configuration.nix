@@ -185,6 +185,12 @@
      #tightvnc
     ];
 
+    environment.variables = {
+      GTK_IM_MODULE = "kime";
+      QT_IM_MODULE = "kime";
+      XMODIFIERS = "@im=kime";
+    };
+
     # nix options for derivations to persist garbage collection
     #nix.extraOptions = ''
     #  keep-outputs = true

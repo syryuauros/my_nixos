@@ -1,13 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05";
 
+    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05"; #for home-manager(doom-emacs) & tightvnc
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-utils.url = "github:numtide/flake-utils/main";
 
     myxmonad.url = "github:syryuauros/myxmonad";
@@ -72,7 +73,9 @@
 
     homeConfigurations = {
       auros =  inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";  #https://discourse.nixos.org/t/fn-homemanagerconfiguration-missing-arg-system-but-why/21192
+        pkgs = import inputs.nixpkgs2305 nixpkgs;
+        # pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";  #https://discourse.nixos.org/t/fn-homemanagerconfiguration-missing-arg-system-but-why/21192
+
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         #home.username = "syryu@auros";
