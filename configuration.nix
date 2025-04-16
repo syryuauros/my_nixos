@@ -92,7 +92,9 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
-      enabled = "kime";
+      type = "kime";
+      enable = true;
+      # enabled = "kime";
       kime = {};
   };
 };
@@ -100,7 +102,7 @@
   #noto-fonts added
   #fonts.enableFontDir = true;
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     inter

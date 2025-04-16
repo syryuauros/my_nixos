@@ -26,7 +26,7 @@ in {
   programs.bat.enable = true;
 
   fonts.fontconfig.enable = true;
-  nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" ];
+  # nixpkgs.config.permittedInsecurePackages = [ "tightvnc-1.3.10" ];
 
   imports = [
     inputs.myxmonad.homeManagerModules.default
@@ -238,5 +238,5 @@ in {
 
     };
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.05";
 }
