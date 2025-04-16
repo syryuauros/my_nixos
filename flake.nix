@@ -1,10 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils/main";
@@ -51,7 +51,7 @@
               (final: prev: {
                 xmonad-restart = inputs.myxmonad.packages.${system}.xmonad-restart;
                 tightvnc = pkgs2305.tightvnc;
-                xpra = prev.xpra.override {
+                xpra = pkgsUnstable.xpra.override {
                   # enableHtml5 = true;
                 };
                 xpraHtml5 = pkgsUnstable.xpra-html5;
