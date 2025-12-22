@@ -1,11 +1,11 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-22.11"; #for home-manager(doom-emacs) & tightvnc
+    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05"; #for home-manager(doom-emacs) & tightvnc
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,8 +15,8 @@
     doom-private.url = "github:syryuauros/doom-private";
     doom-private.flake = false;
     nix-doom-emacs = {
-      url = "github:syryuauros/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:jjdosa/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs2305";
     };
   };
 
@@ -45,7 +45,7 @@
       nixpkgs = {
         inherit system;
         config.allowUnfree = true;
-        config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" ];
+        config.permittedInsecurePackages = [ "tightvnc-1.3.10" "electron-24.8.6" "electron-25.9.0"];
         overlays = [
           # inputs.nix-doom-emacs.overlays.default
           # inputs.nix-doom-emacs.overlay

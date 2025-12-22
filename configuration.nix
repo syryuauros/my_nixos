@@ -207,6 +207,7 @@
   #
   # default editor setting from nano to vi editor
     programs.neovim.defaultEditor = true;
+    programs.nix-ld.enable = true;
 
   # List services that you want to enable:
     services.flatpak.enable = true;
