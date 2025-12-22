@@ -6,7 +6,7 @@
       
     ];
     systemd.tmpfiles.rules = [
-      "d /home/youruser/.vscode-server 0700 auros -"
+      "d /home/auros/.vscode-server 0700 auros -"
     ];
 
 
