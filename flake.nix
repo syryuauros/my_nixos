@@ -3,9 +3,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-23.05"; #for home-manager(doom-emacs) & tightvnc
+    nixpkgs2305.url = "github:nixos/nixpkgs/nixos-22.11"; #for home-manager(doom-emacs) & tightvnc
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

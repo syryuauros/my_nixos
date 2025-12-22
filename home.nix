@@ -34,7 +34,7 @@ in {
     ./tightvncHome.nix
     ./qemuHome.nix
     ./nginxHome.nix
-    # ./xpraHome.nix
+    ./xpraHome.nix
   ];
   mysystem.windowManager.xmonad.enable = true;
 
@@ -155,14 +155,14 @@ in {
     enable = true;
     extensions = [
       { id = "gfbliohnnapiefjpjlpjnehglfpaknnc"; } # surfingkeys
-      { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
+      # { id = "kbfnbcaeplbcioakkpcpgfkobkghlhen"; } # grammarly
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
       { id = "chphlpgkkbolifaimnlloiipkdnihall"; } # onetab
-      { id = "lpfemeioodjbpieminkklglpmhlngfcn"; } # WebChatGPT
-      { id = "cipccbpjpemcnijhjcdjmkjhmhniiick"; } # SciSpace
-      { id = "cbgecfllfhmmnknmamkejadjmnmpfjmp"; } # ChatGPT>>Summarize & Chat
-      { id = "nmmicjeknamkfloonkhhcjmomieiodli"; } # YouTube Summary with ChatGPT & Claude
-      { id = "hlgbcneanomplepojfcnclggenpcoldo"; } # Perplexity - AI Companion
+      # { id = "lpfemeioodjbpieminkklglpmhlngfcn"; } # WebChatGPT
+      # { id = "cipccbpjpemcnijhjcdjmkjhmhniiick"; } # SciSpace
+      # { id = "cbgecfllfhmmnknmamkejadjmnmpfjmp"; } # ChatGPT>>Summarize & Chat
+      # { id = "nmmicjeknamkfloonkhhcjmomieiodli"; } # YouTube Summary with ChatGPT & Claude
+      # { id = "hlgbcneanomplepojfcnclggenpcoldo"; } # Perplexity - AI Companion
     ];
   };
   # extensions ID check (below, answer from chatgpt)
@@ -239,5 +239,5 @@ in {
 
     };
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "22.11";
 }
